@@ -1,0 +1,19 @@
+{
+  "kind": "direct-postscript",
+  "illustratorEvidence": true,
+  "pdfSurface": "absent",
+  "privateSource": "present",
+  "compression": "none",
+  "privateBlocks": 0,
+  "fingerprint": {
+    "sourceKind": "direct-postscript",
+    "ai8CreatorVersion": "28.0",
+    "featureMarkers": [
+      "%AI8_CreatorVersion"
+    ],
+    "creator": "Adobe Illustrator 28.0",
+    "contradictions": [],
+    "sourceSha256": "33d29765ae78c0c227bb1da228df031ae7b448c3361c05eb7cdbab0fcf72cc2c"
+  },
+  "diagnostics": []
+}

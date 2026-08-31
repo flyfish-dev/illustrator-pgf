@@ -1,0 +1,16 @@
+{
+  "sha256": "33d29765ae78c0c227bb1da228df031ae7b448c3361c05eb7cdbab0fcf72cc2c",
+  "source": "hand-authored synthetic fixture in this repository",
+  "license": "MIT",
+  "publicRedistribution": true,
+  "illustratorVersion": "synthetic; not exported by Adobe Illustrator",
+  "operatingSystem": "not applicable",
+  "saveOptions": "not applicable",
+  "pdfCompatibility": false,
+  "fonts": ["Helvetica reference only; no font binary bundled"],
+  "iccProfile": null,
+  "linkedResources": [],
+  "features": ["artboard", "layer", "closed path", "CMYK fill", "stroke", "point text", "unknown operator"],
+  "expectedDiagnostics": ["AI_OPERATOR_UNKNOWN", "AI_TEXT_FONT_EXTERNAL"],
+  "oracleVersion": "synthetic-schema-1"
+}

@@ -1,0 +1,72 @@
+{
+  "fidelity": "partial",
+  "exactFeatures": [
+    "lossless-token-order",
+    "source-spans",
+    "unknown-syntax-preservation"
+  ],
+  "highFeatures": [
+    "basic-path-geometry",
+    "compound-paths",
+    "groups",
+    "layers",
+    "process-color",
+    "stroke-geometry",
+    "shared-canvas-artboards"
+  ],
+  "partialFeatures": [
+    "font-dependent-text-layout",
+    "unknown-visible-operator"
+  ],
+  "structureOnlyFeatures": [],
+  "unsupportedFeatures": [
+    {
+      "feature": "font-dependent-text-layout",
+      "count": 1,
+      "visible": true,
+      "fidelity": "partial",
+      "statementIndices": [
+        17
+      ],
+      "diagnostics": [
+        "Text remains native and selectable, but needs a font resolver and version-specific layout rules."
+      ]
+    },
+    {
+      "feature": "unknown-visible-operator",
+      "count": 1,
+      "visible": true,
+      "fidelity": "partial",
+      "statementIndices": [
+        22
+      ],
+      "diagnostics": [
+        "Unknown operator mysteryVisibleOperator is preserved losslessly and was not executed."
+      ]
+    }
+  ],
+  "unknownOperators": {
+    "mysteryVisibleOperator": 1
+  },
+  "diagnostics": [
+    {
+      "code": "AI_OPERATOR_UNKNOWN",
+      "severity": "warning",
+      "stage": "lower",
+      "message": "Unknown Illustrator operator mysteryVisibleOperator was preserved and may affect visible output.",
+      "sourceSpan": {
+        "start": {
+          "offset": 319,
+          "line": 23,
+          "column": 1
+        },
+        "end": {
+          "offset": 341,
+          "line": 23,
+          "column": 23
+        }
+      },
+      "feature": "mysteryVisibleOperator"
+    }
+  ]
+}

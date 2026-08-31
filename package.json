@@ -1,0 +1,97 @@
+{
+  "name": "@flyfish/illustrator-pgf",
+  "version": "0.1.0",
+  "description": "Bounded, byte-lossless Adobe Illustrator native PGF/private-source parser, Scene IR and browser renderer SDK",
+  "type": "module",
+  "license": "MIT",
+  "author": "Flyfish Open Source Studio",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flyfish-dev/illustrator-pgf.git"
+  },
+  "homepage": "https://github.com/flyfish-dev/illustrator-pgf#readme",
+  "bugs": {
+    "url": "https://github.com/flyfish-dev/illustrator-pgf/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    },
+    "./node": {
+      "types": "./dist/src/node.d.ts",
+      "import": "./dist/src/node.js"
+    },
+    "./worker": {
+      "types": "./dist/src/worker-entry.d.ts",
+      "import": "./dist/src/worker-entry.js"
+    },
+    "./worker-runtime": {
+      "types": "./dist/src/worker-runtime.d.ts",
+      "import": "./dist/src/worker-runtime.js"
+    },
+    "./file-viewer-adapter": {
+      "types": "./dist/integrations/file-viewer/index.d.ts",
+      "import": "./dist/integrations/file-viewer/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "illustrator-pgf": "./dist/src/cli.js"
+  },
+  "files": [
+    "dist",
+    "docs/api.md",
+    "docs/architecture.md",
+    "docs/corpus-policy.md",
+    "docs/format-versions.md",
+    "docs/implementation-report.md",
+    "docs/operator-coverage.json",
+    "docs/release-checklist.md",
+    "docs/sample-benchmark.json",
+    "docs/sample-diff.json",
+    "docs/security.md",
+    "docs/support-matrix.md",
+    "examples",
+    "README.md",
+    "SECURITY.md",
+    "THIRD_PARTY_NOTICES.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "DEVELOPMENT-SPEC.md"
+  ],
+  "scripts": {
+    "clean": "node -e \"const f=require('node:fs');for(const p of ['dist','dist-test'])f.rmSync(p,{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "test": "npm run clean && tsc -p tsconfig.test.json && node --test dist-test/tests/*.test.js",
+    "check": "npm test && npm run build && npm pack --dry-run",
+    "prepublishOnly": "npm run check",
+    "inspect:sample": "npm run build && node dist/src/cli.js inspect corpus/synthetic/minimal.ai",
+    "pack:dry": "npm pack --dry-run",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "benchmark:sample": "npm run build && node dist/src/cli.js benchmark corpus/synthetic/minimal.ai 10"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "keywords": [
+    "adobe-illustrator",
+    "ai",
+    "pgf",
+    "parser",
+    "lossless-ast",
+    "scene-graph",
+    "canvas",
+    "svg",
+    "worker"
+  ]
+}

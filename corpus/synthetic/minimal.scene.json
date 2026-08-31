@@ -1,0 +1,771 @@
+{
+  "format": "adobe-illustrator.scene",
+  "schemaVersion": 1,
+  "unit": "pt",
+  "coordinateSystem": "illustrator-y-up",
+  "largeCanvasScale": 1,
+  "colorMode": "cmyk",
+  "metadata": {
+    "Creator": "Adobe Illustrator 28.0"
+  },
+  "artboards": [
+    {
+      "id": "artboard-0",
+      "name": "Main",
+      "bounds": {
+        "left": 0,
+        "bottom": 0,
+        "right": 200,
+        "top": 100
+      },
+      "bleed": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "rulerOrigin": {
+        "x": 0,
+        "y": 0
+      },
+      "selected": true,
+      "locked": false,
+      "pixelAspectRatio": 1
+    }
+  ],
+  "layers": [
+    {
+      "id": "node-0",
+      "sourceSpan": {
+        "start": {
+          "offset": 181,
+          "line": 10,
+          "column": 1
+        },
+        "end": {
+          "offset": 208,
+          "line": 10,
+          "column": 28
+        }
+      },
+      "transform": {
+        "a": 1,
+        "b": 0,
+        "c": 0,
+        "d": 1,
+        "e": 0,
+        "f": 0
+      },
+      "visible": true,
+      "locked": false,
+      "printable": true,
+      "appearance": {
+        "fills": [],
+        "strokes": [],
+        "opacity": 1,
+        "blendMode": "normal",
+        "knockout": false,
+        "isolated": false,
+        "effects": [],
+        "source": "native"
+      },
+      "fidelity": "high",
+      "diagnostics": [],
+      "rawStatementIndices": [
+        9
+      ],
+      "type": "Layer",
+      "children": [
+        {
+          "id": "node-1",
+          "sourceSpan": {
+            "start": {
+              "offset": 222,
+              "line": 12,
+              "column": 1
+            },
+            "end": {
+              "offset": 259,
+              "line": 17,
+              "column": 2
+            }
+          },
+          "parentId": "node-0",
+          "layerId": "node-0",
+          "transform": {
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "d": 1,
+            "e": 0,
+            "f": 0
+          },
+          "visible": true,
+          "locked": false,
+          "printable": true,
+          "appearance": {
+            "fills": [
+              {
+                "paint": {
+                  "kind": "cmyk",
+                  "cyan": 0.1,
+                  "magenta": 0.2,
+                  "yellow": 0.3,
+                  "black": 0.05,
+                  "alpha": 1
+                },
+                "opacity": 1,
+                "overprint": false
+              }
+            ],
+            "strokes": [
+              {
+                "paint": {
+                  "kind": "cmyk",
+                  "cyan": 0,
+                  "magenta": 0,
+                  "yellow": 0,
+                  "black": 1,
+                  "alpha": 1
+                },
+                "width": 2,
+                "alignment": "center",
+                "cap": "butt",
+                "join": "miter",
+                "miterLimit": 10,
+                "dashArray": [],
+                "dashOffset": 0,
+                "opacity": 1,
+                "overprint": false
+              }
+            ],
+            "opacity": 1,
+            "blendMode": "normal",
+            "knockout": false,
+            "isolated": false,
+            "effects": [],
+            "source": "native"
+          },
+          "fidelity": "high",
+          "diagnostics": [],
+          "rawStatementIndices": [
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "type": "Path",
+          "geometry": {
+            "contours": [
+              {
+                "start": {
+                  "x": 10,
+                  "y": 10
+                },
+                "segments": [
+                  {
+                    "kind": "line",
+                    "to": {
+                      "x": 190,
+                      "y": 10
+                    }
+                  },
+                  {
+                    "kind": "line",
+                    "to": {
+                      "x": 190,
+                      "y": 90
+                    }
+                  },
+                  {
+                    "kind": "line",
+                    "to": {
+                      "x": 10,
+                      "y": 90
+                    }
+                  }
+                ],
+                "closed": true
+              }
+            ],
+            "fillRule": "nonzero"
+          },
+          "paintPath": true,
+          "clippingPath": false,
+          "bounds": {
+            "left": 10,
+            "bottom": 10,
+            "right": 190,
+            "top": 90
+          }
+        },
+        {
+          "id": "node-2",
+          "sourceSpan": {
+            "start": {
+              "offset": 260,
+              "line": 18,
+              "column": 1
+            },
+            "end": {
+              "offset": 318,
+              "line": 22,
+              "column": 3
+            }
+          },
+          "parentId": "node-0",
+          "layerId": "node-0",
+          "transform": {
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "d": 1,
+            "e": 30,
+            "f": 45
+          },
+          "visible": true,
+          "locked": false,
+          "printable": true,
+          "appearance": {
+            "fills": [
+              {
+                "paint": {
+                  "kind": "cmyk",
+                  "cyan": 0.1,
+                  "magenta": 0.2,
+                  "yellow": 0.3,
+                  "black": 0.05,
+                  "alpha": 1
+                },
+                "opacity": 1,
+                "overprint": false
+              }
+            ],
+            "strokes": [],
+            "opacity": 1,
+            "blendMode": "normal",
+            "knockout": false,
+            "isolated": false,
+            "effects": [],
+            "source": "native"
+          },
+          "fidelity": "partial",
+          "diagnostics": [
+            {
+              "code": "AI_TEXT_FONT_EXTERNAL",
+              "severity": "warning",
+              "stage": "resource",
+              "message": "Font Helvetica must be resolved by the host before layout can be considered exact.",
+              "feature": "font"
+            }
+          ],
+          "rawStatementIndices": [
+            17,
+            18,
+            19,
+            20
+          ],
+          "type": "Text",
+          "textKind": "point",
+          "direction": "horizontal",
+          "runs": [
+            {
+              "text": "Hello (PGF)",
+              "fontPostScriptName": "Helvetica",
+              "fontSize": 12,
+              "tracking": 0,
+              "baselineShift": 0,
+              "horizontalScale": 1,
+              "verticalScale": 1,
+              "fill": {
+                "kind": "cmyk",
+                "cyan": 0.1,
+                "magenta": 0.2,
+                "yellow": 0.3,
+                "black": 0.05,
+                "alpha": 1
+              },
+              "stroke": {
+                "kind": "cmyk",
+                "cyan": 0,
+                "magenta": 0,
+                "yellow": 0,
+                "black": 1,
+                "alpha": 1
+              },
+              "opacity": 1
+            }
+          ],
+          "bounds": {
+            "left": 30,
+            "bottom": 42.12,
+            "right": 109.2,
+            "top": 56.519999999999996
+          }
+        },
+        {
+          "id": "node-3",
+          "sourceSpan": {
+            "start": {
+              "offset": 319,
+              "line": 23,
+              "column": 1
+            },
+            "end": {
+              "offset": 341,
+              "line": 23,
+              "column": 23
+            }
+          },
+          "parentId": "node-0",
+          "layerId": "node-0",
+          "transform": {
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "d": 1,
+            "e": 0,
+            "f": 0
+          },
+          "visible": false,
+          "locked": false,
+          "printable": true,
+          "appearance": {
+            "fills": [],
+            "strokes": [],
+            "opacity": 1,
+            "blendMode": "normal",
+            "knockout": false,
+            "isolated": false,
+            "effects": [],
+            "source": "native"
+          },
+          "fidelity": "partial",
+          "diagnostics": [],
+          "rawStatementIndices": [
+            22
+          ],
+          "type": "UnknownNode",
+          "operator": "mysteryVisibleOperator",
+          "payload": "mysteryVisibleOperator",
+          "visibleImpact": true,
+          "unsupportedReason": "No declarative handler is registered for mysteryVisibleOperator."
+        }
+      ],
+      "preview": true,
+      "color": {
+        "kind": "rgb",
+        "red": 0.30980392156862746,
+        "green": 0.5019607843137255,
+        "blue": 1,
+        "alpha": 1
+      },
+      "layerId": "node-0",
+      "name": "Artwork",
+      "bounds": {
+        "left": 10,
+        "bottom": 10,
+        "right": 190,
+        "top": 90
+      }
+    }
+  ],
+  "children": [
+    {
+      "id": "node-0",
+      "sourceSpan": {
+        "start": {
+          "offset": 181,
+          "line": 10,
+          "column": 1
+        },
+        "end": {
+          "offset": 208,
+          "line": 10,
+          "column": 28
+        }
+      },
+      "transform": {
+        "a": 1,
+        "b": 0,
+        "c": 0,
+        "d": 1,
+        "e": 0,
+        "f": 0
+      },
+      "visible": true,
+      "locked": false,
+      "printable": true,
+      "appearance": {
+        "fills": [],
+        "strokes": [],
+        "opacity": 1,
+        "blendMode": "normal",
+        "knockout": false,
+        "isolated": false,
+        "effects": [],
+        "source": "native"
+      },
+      "fidelity": "high",
+      "diagnostics": [],
+      "rawStatementIndices": [
+        9
+      ],
+      "type": "Layer",
+      "children": [
+        {
+          "id": "node-1",
+          "sourceSpan": {
+            "start": {
+              "offset": 222,
+              "line": 12,
+              "column": 1
+            },
+            "end": {
+              "offset": 259,
+              "line": 17,
+              "column": 2
+            }
+          },
+          "parentId": "node-0",
+          "layerId": "node-0",
+          "transform": {
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "d": 1,
+            "e": 0,
+            "f": 0
+          },
+          "visible": true,
+          "locked": false,
+          "printable": true,
+          "appearance": {
+            "fills": [
+              {
+                "paint": {
+                  "kind": "cmyk",
+                  "cyan": 0.1,
+                  "magenta": 0.2,
+                  "yellow": 0.3,
+                  "black": 0.05,
+                  "alpha": 1
+                },
+                "opacity": 1,
+                "overprint": false
+              }
+            ],
+            "strokes": [
+              {
+                "paint": {
+                  "kind": "cmyk",
+                  "cyan": 0,
+                  "magenta": 0,
+                  "yellow": 0,
+                  "black": 1,
+                  "alpha": 1
+                },
+                "width": 2,
+                "alignment": "center",
+                "cap": "butt",
+                "join": "miter",
+                "miterLimit": 10,
+                "dashArray": [],
+                "dashOffset": 0,
+                "opacity": 1,
+                "overprint": false
+              }
+            ],
+            "opacity": 1,
+            "blendMode": "normal",
+            "knockout": false,
+            "isolated": false,
+            "effects": [],
+            "source": "native"
+          },
+          "fidelity": "high",
+          "diagnostics": [],
+          "rawStatementIndices": [
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "type": "Path",
+          "geometry": {
+            "contours": [
+              {
+                "start": {
+                  "x": 10,
+                  "y": 10
+                },
+                "segments": [
+                  {
+                    "kind": "line",
+                    "to": {
+                      "x": 190,
+                      "y": 10
+                    }
+                  },
+                  {
+                    "kind": "line",
+                    "to": {
+                      "x": 190,
+                      "y": 90
+                    }
+                  },
+                  {
+                    "kind": "line",
+                    "to": {
+                      "x": 10,
+                      "y": 90
+                    }
+                  }
+                ],
+                "closed": true
+              }
+            ],
+            "fillRule": "nonzero"
+          },
+          "paintPath": true,
+          "clippingPath": false,
+          "bounds": {
+            "left": 10,
+            "bottom": 10,
+            "right": 190,
+            "top": 90
+          }
+        },
+        {
+          "id": "node-2",
+          "sourceSpan": {
+            "start": {
+              "offset": 260,
+              "line": 18,
+              "column": 1
+            },
+            "end": {
+              "offset": 318,
+              "line": 22,
+              "column": 3
+            }
+          },
+          "parentId": "node-0",
+          "layerId": "node-0",
+          "transform": {
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "d": 1,
+            "e": 30,
+            "f": 45
+          },
+          "visible": true,
+          "locked": false,
+          "printable": true,
+          "appearance": {
+            "fills": [
+              {
+                "paint": {
+                  "kind": "cmyk",
+                  "cyan": 0.1,
+                  "magenta": 0.2,
+                  "yellow": 0.3,
+                  "black": 0.05,
+                  "alpha": 1
+                },
+                "opacity": 1,
+                "overprint": false
+              }
+            ],
+            "strokes": [],
+            "opacity": 1,
+            "blendMode": "normal",
+            "knockout": false,
+            "isolated": false,
+            "effects": [],
+            "source": "native"
+          },
+          "fidelity": "partial",
+          "diagnostics": [
+            {
+              "code": "AI_TEXT_FONT_EXTERNAL",
+              "severity": "warning",
+              "stage": "resource",
+              "message": "Font Helvetica must be resolved by the host before layout can be considered exact.",
+              "feature": "font"
+            }
+          ],
+          "rawStatementIndices": [
+            17,
+            18,
+            19,
+            20
+          ],
+          "type": "Text",
+          "textKind": "point",
+          "direction": "horizontal",
+          "runs": [
+            {
+              "text": "Hello (PGF)",
+              "fontPostScriptName": "Helvetica",
+              "fontSize": 12,
+              "tracking": 0,
+              "baselineShift": 0,
+              "horizontalScale": 1,
+              "verticalScale": 1,
+              "fill": {
+                "kind": "cmyk",
+                "cyan": 0.1,
+                "magenta": 0.2,
+                "yellow": 0.3,
+                "black": 0.05,
+                "alpha": 1
+              },
+              "stroke": {
+                "kind": "cmyk",
+                "cyan": 0,
+                "magenta": 0,
+                "yellow": 0,
+                "black": 1,
+                "alpha": 1
+              },
+              "opacity": 1
+            }
+          ],
+          "bounds": {
+            "left": 30,
+            "bottom": 42.12,
+            "right": 109.2,
+            "top": 56.519999999999996
+          }
+        },
+        {
+          "id": "node-3",
+          "sourceSpan": {
+            "start": {
+              "offset": 319,
+              "line": 23,
+              "column": 1
+            },
+            "end": {
+              "offset": 341,
+              "line": 23,
+              "column": 23
+            }
+          },
+          "parentId": "node-0",
+          "layerId": "node-0",
+          "transform": {
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "d": 1,
+            "e": 0,
+            "f": 0
+          },
+          "visible": false,
+          "locked": false,
+          "printable": true,
+          "appearance": {
+            "fills": [],
+            "strokes": [],
+            "opacity": 1,
+            "blendMode": "normal",
+            "knockout": false,
+            "isolated": false,
+            "effects": [],
+            "source": "native"
+          },
+          "fidelity": "partial",
+          "diagnostics": [],
+          "rawStatementIndices": [
+            22
+          ],
+          "type": "UnknownNode",
+          "operator": "mysteryVisibleOperator",
+          "payload": "mysteryVisibleOperator",
+          "visibleImpact": true,
+          "unsupportedReason": "No declarative handler is registered for mysteryVisibleOperator."
+        }
+      ],
+      "preview": true,
+      "color": {
+        "kind": "rgb",
+        "red": 0.30980392156862746,
+        "green": 0.5019607843137255,
+        "blue": 1,
+        "alpha": 1
+      },
+      "layerId": "node-0",
+      "name": "Artwork",
+      "bounds": {
+        "left": 10,
+        "bottom": 10,
+        "right": 190,
+        "top": 90
+      }
+    }
+  ],
+  "resources": {},
+  "diagnostics": [
+    {
+      "code": "AI_OPERATOR_UNKNOWN",
+      "severity": "warning",
+      "stage": "lower",
+      "message": "Unknown Illustrator operator mysteryVisibleOperator was preserved and may affect visible output.",
+      "sourceSpan": {
+        "start": {
+          "offset": 319,
+          "line": 23,
+          "column": 1
+        },
+        "end": {
+          "offset": 341,
+          "line": 23,
+          "column": 23
+        }
+      },
+      "feature": "mysteryVisibleOperator"
+    }
+  ],
+  "unsupportedFeatures": [
+    {
+      "feature": "font-dependent-text-layout",
+      "count": 1,
+      "visible": true,
+      "fidelity": "partial",
+      "statementIndices": [
+        17
+      ],
+      "diagnostics": [
+        "Text remains native and selectable, but needs a font resolver and version-specific layout rules."
+      ]
+    },
+    {
+      "feature": "unknown-visible-operator",
+      "count": 1,
+      "visible": true,
+      "fidelity": "partial",
+      "statementIndices": [
+        22
+      ],
+      "diagnostics": [
+        "Unknown operator mysteryVisibleOperator is preserved losslessly and was not executed."
+      ]
+    }
+  ],
+  "sourceFingerprint": {
+    "sourceKind": "direct-postscript",
+    "ai8CreatorVersion": "28.0",
+    "featureMarkers": [
+      "%AI8_CreatorVersion"
+    ],
+    "creator": "Adobe Illustrator 28.0",
+    "contradictions": [],
+    "sourceSha256": "33d29765ae78c0c227bb1da228df031ae7b448c3361c05eb7cdbab0fcf72cc2c"
+  },
+  "fidelity": "partial"
+}

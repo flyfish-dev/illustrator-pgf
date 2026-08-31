@@ -1,0 +1,25 @@
+%!PS-Adobe-3.0
+%%Creator: Adobe Illustrator 28.0
+%%AI8_CreatorVersion: 28.0
+%%BoundingBox: 0 0 200 100
+%AIArtboard: Main|0 0 200 100
+1 0 0 1 0 0 cm
+0.1 0.2 0.3 0.05 k
+0 0 0 1 K
+2 w
+1 1 1 1 0 0 0 79 128 255 Lb
+(Artwork) Ln
+10 10 m
+190 10 l
+190 90 l
+10 90 l
+h
+B
+BT
+/Helvetica 12 Tf
+1 0 0 1 30 45 Tm
+(Hello \(PGF\)) Tj
+ET
+mysteryVisibleOperator
+LB
+%%EOF

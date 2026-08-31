@@ -1,0 +1,6 @@
+dist/
+dist-test/
+*.tgz
+*.zip
+node_modules/
+.DS_Store

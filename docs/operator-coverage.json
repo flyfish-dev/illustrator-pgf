@@ -1,0 +1,2257 @@
+[
+  {
+    "operator": "*u",
+    "family": "ai3",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [
+      "compound"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "compound-begin"
+  },
+  {
+    "operator": "*U",
+    "family": "ai3",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [
+      "compound"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "compound-end"
+  },
+  {
+    "operator": "Adobe_Illustrator_AI5",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-Adobe_Illustrator_AI5",
+    "variadic": true
+  },
+  {
+    "operator": "Adobe_Illustrator_AI8",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-Adobe_Illustrator_AI8",
+    "variadic": true
+  },
+  {
+    "operator": "array",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-array",
+    "variadic": true
+  },
+  {
+    "operator": "ashow",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-ashow",
+    "variadic": true
+  },
+  {
+    "operator": "awidthshow",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-awidthshow",
+    "variadic": true
+  },
+  {
+    "operator": "b",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-b"
+  },
+  {
+    "operator": "B",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-B"
+  },
+  {
+    "operator": "b*",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-b*"
+  },
+  {
+    "operator": "B*",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-B*"
+  },
+  {
+    "operator": "Bd",
+    "family": "ai8",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "resource",
+    "fidelity": "structure-only",
+    "fixtureId": "gradient-definition-begin",
+    "variadic": true
+  },
+  {
+    "operator": "BD",
+    "family": "ai8",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "resource",
+    "fidelity": "structure-only",
+    "fixtureId": "gradient-definition-end"
+  },
+  {
+    "operator": "begin",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-begin",
+    "variadic": true
+  },
+  {
+    "operator": "Bg",
+    "family": "ai8",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "fallback",
+    "fidelity": "partial",
+    "fixtureId": "gradient-instance",
+    "variadic": true
+  },
+  {
+    "operator": "bind",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-bind",
+    "variadic": true
+  },
+  {
+    "operator": "BM",
+    "family": "ai9",
+    "operands": [
+      "name"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "blend"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "blend-mode"
+  },
+  {
+    "operator": "Bp",
+    "family": "ai8",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "resource",
+    "fidelity": "structure-only",
+    "fixtureId": "pattern-begin",
+    "variadic": true
+  },
+  {
+    "operator": "BT",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-begin"
+  },
+  {
+    "operator": "c",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number",
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-cubic"
+  },
+  {
+    "operator": "ca",
+    "family": "ai9",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "opacity"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "opacity-fill"
+  },
+  {
+    "operator": "CA",
+    "family": "ai9",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "opacity"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "opacity-stroke"
+  },
+  {
+    "operator": "charpath",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-charpath",
+    "variadic": true
+  },
+  {
+    "operator": "cleartomark",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-cleartomark",
+    "variadic": true
+  },
+  {
+    "operator": "clip",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "clipping"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "clip-ps"
+  },
+  {
+    "operator": "closepath",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-close-closepath"
+  },
+  {
+    "operator": "cm",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number",
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "transform"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "transform-concat"
+  },
+  {
+    "operator": "colorimage",
+    "family": "base",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "scene",
+    "fidelity": "structure-only",
+    "fixtureId": "image-raster-colorimage",
+    "variadic": true
+  },
+  {
+    "operator": "concat",
+    "family": "base",
+    "operands": [
+      "array"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "transform"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "transform-concat-array"
+  },
+  {
+    "operator": "copy",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-copy",
+    "variadic": true
+  },
+  {
+    "operator": "count",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-count",
+    "variadic": true
+  },
+  {
+    "operator": "currentdict",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-currentdict",
+    "variadic": true
+  },
+  {
+    "operator": "currentfile",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-currentfile",
+    "variadic": true
+  },
+  {
+    "operator": "currentpoint",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-currentpoint",
+    "variadic": true
+  },
+  {
+    "operator": "curveto",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number",
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-curveto"
+  },
+  {
+    "operator": "cvlit",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-cvlit",
+    "variadic": true
+  },
+  {
+    "operator": "cvx",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-cvx",
+    "variadic": true
+  },
+  {
+    "operator": "d",
+    "family": "base",
+    "operands": [
+      "array",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "stroke-dash"
+  },
+  {
+    "operator": "ddef",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-ddef",
+    "variadic": true
+  },
+  {
+    "operator": "def",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-def",
+    "variadic": true
+  },
+  {
+    "operator": "dict",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-dict",
+    "variadic": true
+  },
+  {
+    "operator": "dup",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-dup",
+    "variadic": true
+  },
+  {
+    "operator": "end",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-end",
+    "variadic": true
+  },
+  {
+    "operator": "eoclip",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "clipping"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "clip-eops"
+  },
+  {
+    "operator": "eofill",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-eofill"
+  },
+  {
+    "operator": "EP",
+    "family": "ai8",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "resource",
+    "fidelity": "structure-only",
+    "fixtureId": "pattern-end"
+  },
+  {
+    "operator": "ET",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-end-ET"
+  },
+  {
+    "operator": "exch",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-exch",
+    "variadic": true
+  },
+  {
+    "operator": "exec",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-exec",
+    "variadic": true
+  },
+  {
+    "operator": "executeonly",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-executeonly",
+    "variadic": true
+  },
+  {
+    "operator": "exit",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-exit",
+    "variadic": true
+  },
+  {
+    "operator": "f",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-f"
+  },
+  {
+    "operator": "F",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-F"
+  },
+  {
+    "operator": "f*",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-f*"
+  },
+  {
+    "operator": "fill",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-fill"
+  },
+  {
+    "operator": "findfont",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-findfont",
+    "variadic": true
+  },
+  {
+    "operator": "flushfile",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-flushfile",
+    "variadic": true
+  },
+  {
+    "operator": "for",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-for",
+    "variadic": true
+  },
+  {
+    "operator": "g",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "fill",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "paint-g"
+  },
+  {
+    "operator": "G",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "paint-G"
+  },
+  {
+    "operator": "get",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-get",
+    "variadic": true
+  },
+  {
+    "operator": "grestore",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "graphics-state"
+    ],
+    "stateWrites": [
+      "graphics-state"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "gstate-restore-grestore"
+  },
+  {
+    "operator": "gsave",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "graphics-state"
+    ],
+    "stateWrites": [
+      "graphics-state"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "gstate-save-gsave"
+  },
+  {
+    "operator": "h",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-close-h"
+  },
+  {
+    "operator": "if",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-if",
+    "variadic": true
+  },
+  {
+    "operator": "ifelse",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-ifelse",
+    "variadic": true
+  },
+  {
+    "operator": "image",
+    "family": "base",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "scene",
+    "fidelity": "structure-only",
+    "fixtureId": "image-raster-image",
+    "variadic": true
+  },
+  {
+    "operator": "index",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-index",
+    "variadic": true
+  },
+  {
+    "operator": "initgraphics",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [
+      "graphics-state"
+    ],
+    "produces": "none",
+    "fidelity": "high",
+    "fixtureId": "graphics-init"
+  },
+  {
+    "operator": "initmatrix",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [
+      "transform"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "transform-init"
+  },
+  {
+    "operator": "j",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "stroke-join"
+  },
+  {
+    "operator": "J",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "stroke-cap"
+  },
+  {
+    "operator": "k",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "fill",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "paint-k"
+  },
+  {
+    "operator": "K",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "paint-K"
+  },
+  {
+    "operator": "known",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-known",
+    "variadic": true
+  },
+  {
+    "operator": "kshow",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-kshow",
+    "variadic": true
+  },
+  {
+    "operator": "l",
+    "family": "base",
+    "operands": [
+      "number",
+      "number"
+    ],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-line"
+  },
+  {
+    "operator": "Lb",
+    "family": "ai5",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "hierarchy"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "layer-begin",
+    "minVersion": 5,
+    "variadic": true
+  },
+  {
+    "operator": "LB",
+    "family": "ai5",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [
+      "hierarchy"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "layer-end",
+    "minVersion": 5
+  },
+  {
+    "operator": "lineto",
+    "family": "base",
+    "operands": [
+      "number",
+      "number"
+    ],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-lineto"
+  },
+  {
+    "operator": "Ln",
+    "family": "ai5",
+    "operands": [
+      "string"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "hierarchy"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "layer-name",
+    "minVersion": 5
+  },
+  {
+    "operator": "load",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-load",
+    "variadic": true
+  },
+  {
+    "operator": "loop",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-loop",
+    "variadic": true
+  },
+  {
+    "operator": "m",
+    "family": "base",
+    "operands": [
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-move"
+  },
+  {
+    "operator": "M",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "stroke-miter"
+  },
+  {
+    "operator": "mark",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-mark",
+    "variadic": true
+  },
+  {
+    "operator": "maxlength",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-maxlength",
+    "variadic": true
+  },
+  {
+    "operator": "Mb",
+    "family": "ai8",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "metadata",
+    "fidelity": "structure-only",
+    "fixtureId": "multilayer-mask-begin",
+    "variadic": true
+  },
+  {
+    "operator": "MB",
+    "family": "ai8",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "metadata",
+    "fidelity": "structure-only",
+    "fixtureId": "multilayer-mask-end"
+  },
+  {
+    "operator": "Md",
+    "family": "ai8",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "metadata",
+    "fidelity": "structure-only",
+    "fixtureId": "multilayer-mask-define",
+    "variadic": true
+  },
+  {
+    "operator": "moveto",
+    "family": "base",
+    "operands": [
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-moveto"
+  },
+  {
+    "operator": "n",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-n"
+  },
+  {
+    "operator": "N",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-N"
+  },
+  {
+    "operator": "newpath",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "none",
+    "fidelity": "high",
+    "fixtureId": "path-new"
+  },
+  {
+    "operator": "npop",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-npop",
+    "variadic": true
+  },
+  {
+    "operator": "op",
+    "family": "base",
+    "operands": [
+      "boolean"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "overprint"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "overprint-fill"
+  },
+  {
+    "operator": "OP",
+    "family": "base",
+    "operands": [
+      "boolean"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "overprint"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "overprint-stroke"
+  },
+  {
+    "operator": "pop",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-pop",
+    "variadic": true
+  },
+  {
+    "operator": "put",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-put",
+    "variadic": true
+  },
+  {
+    "operator": "q",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "graphics-state"
+    ],
+    "stateWrites": [
+      "graphics-state"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "gstate-save-q"
+  },
+  {
+    "operator": "Q",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "graphics-state"
+    ],
+    "stateWrites": [
+      "graphics-state"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "gstate-restore-Q"
+  },
+  {
+    "operator": "rcurveto",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-rcurveto",
+    "variadic": true
+  },
+  {
+    "operator": "readhexstring",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-readhexstring",
+    "variadic": true
+  },
+  {
+    "operator": "readonly",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-readonly",
+    "variadic": true
+  },
+  {
+    "operator": "readstring",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-readstring",
+    "variadic": true
+  },
+  {
+    "operator": "repeat",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-repeat",
+    "variadic": true
+  },
+  {
+    "operator": "restore",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-restore",
+    "variadic": true
+  },
+  {
+    "operator": "rg",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "fill",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "paint-rg"
+  },
+  {
+    "operator": "RG",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "paint-RG"
+  },
+  {
+    "operator": "ri",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-ri",
+    "variadic": true
+  },
+  {
+    "operator": "rlineto",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-rlineto",
+    "variadic": true
+  },
+  {
+    "operator": "rmoveto",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-rmoveto",
+    "variadic": true
+  },
+  {
+    "operator": "roll",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-roll",
+    "variadic": true
+  },
+  {
+    "operator": "rotate",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "transform"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "transform-rotate"
+  },
+  {
+    "operator": "s",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-s"
+  },
+  {
+    "operator": "S",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-S"
+  },
+  {
+    "operator": "save",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-save",
+    "variadic": true
+  },
+  {
+    "operator": "scale",
+    "family": "base",
+    "operands": [
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "transform"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "transform-scale"
+  },
+  {
+    "operator": "scalefont",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-scalefont",
+    "variadic": true
+  },
+  {
+    "operator": "setcmykcolor",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "fill",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "paint-setcmykcolor"
+  },
+  {
+    "operator": "setcolor",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-setcolor",
+    "variadic": true
+  },
+  {
+    "operator": "setcolorspace",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-setcolorspace",
+    "variadic": true
+  },
+  {
+    "operator": "setcolortransfer",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-setcolortransfer",
+    "variadic": true
+  },
+  {
+    "operator": "setdash",
+    "family": "base",
+    "operands": [
+      "array",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "stroke-dash-ps"
+  },
+  {
+    "operator": "setflat",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-setflat",
+    "variadic": true
+  },
+  {
+    "operator": "setfont",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-setfont",
+    "variadic": true
+  },
+  {
+    "operator": "setgray",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "fill",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "paint-setgray"
+  },
+  {
+    "operator": "sethalftone",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-sethalftone",
+    "variadic": true
+  },
+  {
+    "operator": "setlinecap",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "stroke-cap-ps"
+  },
+  {
+    "operator": "setlinejoin",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "stroke-join-ps"
+  },
+  {
+    "operator": "setlinewidth",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "stroke-width-ps"
+  },
+  {
+    "operator": "setmatrix",
+    "family": "base",
+    "operands": [
+      "array"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "transform"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "transform-set"
+  },
+  {
+    "operator": "setmiterlimit",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "stroke-miter-ps"
+  },
+  {
+    "operator": "setopacityalpha",
+    "family": "ai9",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "opacity"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "opacity-object"
+  },
+  {
+    "operator": "setpagedevice",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-setpagedevice",
+    "variadic": true
+  },
+  {
+    "operator": "setrenderingintent",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-setrenderingintent",
+    "variadic": true
+  },
+  {
+    "operator": "setrgbcolor",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "fill",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "paint-setrgbcolor"
+  },
+  {
+    "operator": "setscreen",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-setscreen",
+    "variadic": true
+  },
+  {
+    "operator": "settransfer",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-settransfer",
+    "variadic": true
+  },
+  {
+    "operator": "show",
+    "family": "base",
+    "operands": [
+      "string"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-show-show"
+  },
+  {
+    "operator": "showpage",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-showpage",
+    "variadic": true
+  },
+  {
+    "operator": "string",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-string",
+    "variadic": true
+  },
+  {
+    "operator": "stringwidth",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-stringwidth",
+    "variadic": true
+  },
+  {
+    "operator": "stroke",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path",
+      "paint"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-paint-stroke"
+  },
+  {
+    "operator": "Td",
+    "family": "base",
+    "operands": [
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-move"
+  },
+  {
+    "operator": "terminate",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-terminate",
+    "variadic": true
+  },
+  {
+    "operator": "Tf",
+    "family": "base",
+    "operands": [
+      "name",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-font"
+  },
+  {
+    "operator": "Tj",
+    "family": "base",
+    "operands": [
+      "string"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-show-Tj"
+  },
+  {
+    "operator": "TJ",
+    "family": "base",
+    "operands": [
+      "array"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-show-array"
+  },
+  {
+    "operator": "Tm",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number",
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-matrix"
+  },
+  {
+    "operator": "To",
+    "family": "ai3",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-begin-ai"
+  },
+  {
+    "operator": "TO",
+    "family": "ai3",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-end-TO"
+  },
+  {
+    "operator": "Tp",
+    "family": "ai3",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-path-matrix",
+    "variadic": true
+  },
+  {
+    "operator": "translate",
+    "family": "base",
+    "operands": [
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "transform"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "transform-translate"
+  },
+  {
+    "operator": "Tx",
+    "family": "ai3",
+    "operands": [
+      "string"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "text"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "text-show-Tx"
+  },
+  {
+    "operator": "u",
+    "family": "ai3",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [
+      "hierarchy"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "group-begin"
+  },
+  {
+    "operator": "U",
+    "family": "ai3",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [
+      "hierarchy"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "group-end"
+  },
+  {
+    "operator": "v",
+    "family": "ai3",
+    "operands": [
+      "number",
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-cubic-v"
+  },
+  {
+    "operator": "w",
+    "family": "base",
+    "operands": [
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "stroke-width"
+  },
+  {
+    "operator": "W",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "clipping"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "clip-nonzero"
+  },
+  {
+    "operator": "W*",
+    "family": "base",
+    "operands": [],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "clipping"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "clip-evenodd"
+  },
+  {
+    "operator": "where",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-where",
+    "variadic": true
+  },
+  {
+    "operator": "widthshow",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-widthshow",
+    "variadic": true
+  },
+  {
+    "operator": "x",
+    "family": "ai3",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "fill",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "paint-custom-fill",
+    "variadic": true
+  },
+  {
+    "operator": "X",
+    "family": "ai3",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "partial",
+    "fixtureId": "paint-custom-stroke",
+    "variadic": true
+  },
+  {
+    "operator": "Xa",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "fill",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "paint-Xa"
+  },
+  {
+    "operator": "XA",
+    "family": "base",
+    "operands": [
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [],
+    "stateWrites": [
+      "stroke",
+      "color-mode"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "paint-XA"
+  },
+  {
+    "operator": "XF",
+    "family": "ai7",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "scene",
+    "fidelity": "structure-only",
+    "fixtureId": "image-placed-XF",
+    "variadic": true
+  },
+  {
+    "operator": "XG",
+    "family": "ai7",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "scene",
+    "fidelity": "structure-only",
+    "fixtureId": "image-placed-XG",
+    "variadic": true
+  },
+  {
+    "operator": "XI",
+    "family": "ai3",
+    "operands": [
+      "any"
+    ],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "scene",
+    "fidelity": "structure-only",
+    "fixtureId": "image-raster-XI",
+    "variadic": true
+  },
+  {
+    "operator": "xput",
+    "family": "base",
+    "operands": [],
+    "stateReads": [],
+    "stateWrites": [],
+    "produces": "none",
+    "fidelity": "structure-only",
+    "fixtureId": "program-xput",
+    "variadic": true
+  },
+  {
+    "operator": "y",
+    "family": "ai3",
+    "operands": [
+      "number",
+      "number",
+      "number",
+      "number"
+    ],
+    "stateReads": [
+      "path"
+    ],
+    "stateWrites": [
+      "path"
+    ],
+    "produces": "scene",
+    "fidelity": "high",
+    "fixtureId": "path-cubic-y"
+  }
+]

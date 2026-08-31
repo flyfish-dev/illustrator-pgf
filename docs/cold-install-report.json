@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "installed": "@flyfish/illustrator-pgf@0.1.0",
+  "smoke": {
+    "ok": true,
+    "package": "@flyfish/illustrator-pgf@0.1.0",
+    "runtime": "v24.20.0",
+    "checks": {
+      "inspection": true,
+      "summary": true,
+      "schema": true,
+      "unknownPreserved": true,
+      "lowLevelRoundtrip": true,
+      "sessionRoundtrip": true,
+      "svg": true
+    },
+    "metrics": {
+      "sourceBytes": 351,
+      "tokenCount": 136,
+      "artboards": 1,
+      "nodes": 4,
+      "svgBytes": 922
+    }
+  },
+  "exports": {
+    "ok": true,
+    "required": [
+      "node_modules/@flyfish/illustrator-pgf/dist/src/index.d.ts",
+      "node_modules/@flyfish/illustrator-pgf/dist/src/node.d.ts",
+      "node_modules/@flyfish/illustrator-pgf/dist/src/worker-entry.js",
+      "node_modules/@flyfish/illustrator-pgf/dist/src/worker-runtime.js",
+      "node_modules/@flyfish/illustrator-pgf/dist/integrations/file-viewer/index.js",
+      "node_modules/@flyfish/illustrator-pgf/examples/illustrator-pgf.worker.mjs"
+    ]
+  },
+  "cli": {
+    "inspection": "direct-postscript",
+    "privateSource": "present",
+    "sceneBytes": 18869,
+    "svgBytes": 922,
+    "fidelity": "partial",
+    "unknownOperators": {
+      "mysteryVisibleOperator": 1
+    },
+    "selfDiffEqual": true
+  }
+}
