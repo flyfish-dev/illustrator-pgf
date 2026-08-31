@@ -13,11 +13,11 @@
 ## npm tarball
 
 - 文件：`flyfish-illustrator-pgf-0.1.0.tgz`
-- 打包大小：138,384 bytes
-- 解包大小：698,838 bytes
+- 打包大小：138,389 bytes
+- 解包大小：698,836 bytes
 - 文件数：114
-- npm SHA-1：`163b58698b15518a23d37d5ffd162c46ecf5a909`
-- 完整性：`sha512-+BGwmydzCXR6IVa/PWWgLFY9mifVSsAR2s4fhICAG8t6UHPDKJ0IYqtYPMTHNf+ZnMp1fhQdVwxMLizLebCZbg==`
+- npm SHA-1：`f5bcbc13a827f99110f86cf629651eefac58a94c`
+- 完整性：`sha512-b61LF/i8xTNayRGX/r5o+7Bf2lax5gTr+sVAjyVE/3FnzBAIAr1FHtH5uyIN9Of4hKWDenVX6OH+iym+mB415Q==`
 
 ## 冷安装
 

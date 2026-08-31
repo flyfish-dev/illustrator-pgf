@@ -3,10 +3,10 @@
     "id": "@flyfish/illustrator-pgf@0.1.0",
     "name": "@flyfish/illustrator-pgf",
     "version": "0.1.0",
-    "size": 138384,
-    "unpackedSize": 698838,
-    "shasum": "163b58698b15518a23d37d5ffd162c46ecf5a909",
-    "integrity": "sha512-+BGwmydzCXR6IVa/PWWgLFY9mifVSsAR2s4fhICAG8t6UHPDKJ0IYqtYPMTHNf+ZnMp1fhQdVwxMLizLebCZbg==",
+    "size": 138389,
+    "unpackedSize": 698836,
+    "shasum": "f5bcbc13a827f99110f86cf629651eefac58a94c",
+    "integrity": "sha512-b61LF/i8xTNayRGX/r5o+7Bf2lax5gTr+sVAjyVE/3FnzBAIAr1FHtH5uyIN9Of4hKWDenVX6OH+iym+mB415Q==",
     "filename": "flyfish-illustrator-pgf-0.1.0.tgz",
     "files": [
       {
@@ -576,7 +576,7 @@
       },
       {
         "path": "package.json",
-        "size": 2851,
+        "size": 2849,
         "mode": 420
       }
     ],

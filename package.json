@@ -43,7 +43,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "illustrator-pgf": "./dist/src/cli.js"
+    "illustrator-pgf": "dist/src/cli.js"
   },
   "files": [
     "dist",
