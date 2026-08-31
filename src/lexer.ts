@@ -66,6 +66,20 @@ function classifyWord(raw: string): { kind: IllustratorTokenKind; value?: number
   return { kind: 'word', value: raw }
 }
 
+function findEndDataMarker(source: string, start: number, maximumBytes: number, markerText = '%%EndData'): number {
+  const maximum = Math.min(source.length, start + maximumBytes + 1)
+  let offset = start
+  while (offset < maximum) {
+    const marker = source.indexOf(markerText, offset)
+    if (marker < 0 || marker >= maximum) return -1
+    const next = source.charCodeAt(marker + markerText.length)
+    const lineEnd = next === 0x0a || next === 0x0d || Number.isNaN(next)
+    if (lineEnd) return marker
+    offset = marker + 1
+  }
+  return -1
+}
+
 export function lexIllustratorSource(input: string | Uint8Array, options: LexOptions = {}): IllustratorLexResult {
   const source = sourceText(input)
   const limits = resolveLimits(options.limits)
@@ -103,16 +117,31 @@ export function lexIllustratorSource(input: string | Uint8Array, options: LexOpt
       const raw = source.slice(start, offset)
       const pseudo = /^%_(?!%)/u.test(raw) || /^%AI\d*_/u.test(raw)
       push(pseudo ? 'pseudo-comment' : 'comment', start, offset, raw.slice(1))
-      const binary = /^%%BeginBinary\s*:\s*(\d+)/iu.exec(raw) ?? /^%%BeginData\s*:\s*(\d+)\s+(?:Binary|Bytes?)/iu.exec(raw)
+      const beginBinary = /^%%BeginBinary\s*:\s*(\d+)/iu.exec(raw)
+      const beginData = /^(%_)?%%BeginData\s*:\s*(\d+)(?:\s+.*)?$/iu.exec(raw)
+      const binary = beginBinary ?? beginData
       if (binary !== null) {
-        const count = Number(binary[1])
+        const count = Number(beginData?.[2] ?? binary[1])
         if (!Number.isSafeInteger(count) || count < 0 || count > limits.maxStringBytes) throw new IllustratorError('AI_BINARY_LIMIT', 'lex', `Binary resource declaration exceeds ${limits.maxStringBytes} bytes.`)
         // The required line ending remains a lossless whitespace token before the binary token.
         let lineEnd = offset
         if (source.charCodeAt(lineEnd) === 0x0d) { lineEnd++; if (source.charCodeAt(lineEnd) === 0x0a) lineEnd++ }
         else if (source.charCodeAt(lineEnd) === 0x0a) lineEnd++
         if (lineEnd > offset) { push('whitespace', offset, lineEnd); offset = lineEnd }
-        pendingBinaryBytes = count
+        if (beginData !== null) {
+          const endMarker = findEndDataMarker(source, offset, limits.maxStringBytes, beginData[1] === '%_' ? '%_%%EndData' : '%%EndData')
+          if (endMarker < 0) {
+            const end = Math.min(source.length, offset + limits.maxStringBytes)
+            diagnostics.push(diagnostic('AI_BINARY_ENDDATA_MISSING', 'error', 'lex', '%%BeginData has no %%EndData terminator within the binary resource limit.', { sourceSpan: locator.span(start, end) }))
+            push('binary', offset, end, latin1Encode(source.slice(offset, end)))
+            offset = end
+          } else {
+            push('binary', offset, endMarker, latin1Encode(source.slice(offset, endMarker)))
+            offset = endMarker
+          }
+        } else {
+          pendingBinaryBytes = count
+        }
       }
       continue
     }

@@ -45,6 +45,44 @@ test('Illustrator deflate private-source marker is bounded and decoded', async (
   assert.ok(bytesEqual(decoded.bytes, DIRECT_SOURCE_BYTES))
 })
 
+test('real Illustrator deflate marker may be immediately followed by the zlib header', async () => {
+  const input = makeClassicAiPdf({
+    privateCompression: 'deflate',
+    privateMarkerSeparator: 'adjacent',
+  })
+  const inspection = await inspectIllustrator(input)
+  assert.equal(inspection.privateSource, 'present')
+  assert.equal(inspection.compression, 'deflate')
+  const decoded = await decodeIllustratorPrivateSource(input)
+  assert.ok(bytesEqual(decoded.bytes, DIRECT_SOURCE_BYTES))
+})
+
+test('native payload may start at a later private block after an alternate preview prefix', async () => {
+  const input = makeClassicAiPdf({
+    privateCompression: 'deflate',
+    privateMarkerSeparator: 'adjacent',
+    privatePrefixBlock: latin1Encode('%%BoundingBox: 0 0 200 100\r%%BeginData: 0 Hex Bytes\r%%EndData\r'),
+  })
+  const inspection = await inspectIllustrator(input)
+  assert.equal(inspection.privateSource, 'present')
+  assert.equal(inspection.privateBlocks, 2)
+  assert.ok(inspection.diagnostics.some((diagnostic) => diagnostic.code === 'AI_PRIVATE_PREFIX_BLOCKS_SKIPPED'))
+  const decoded = await decodeIllustratorPrivateSource(input)
+  assert.ok(bytesEqual(decoded.bytes, DIRECT_SOURCE_BYTES))
+})
+
+test('real Illustrator zstd marker may be immediately followed by the frame magic', async () => {
+  const input = makeClassicAiPdf({
+    privateCompression: 'zstd',
+    privateMarkerSeparator: 'adjacent',
+  })
+  const inspection = await inspectIllustrator(input)
+  assert.equal(inspection.privateSource, 'present')
+  assert.equal(inspection.compression, 'zstd')
+  const decoded = await decodeIllustratorPrivateSource(input)
+  assert.ok(bytesEqual(decoded.bytes, DIRECT_SOURCE_BYTES))
+})
+
 test('Illustrator zstd private-source marker is decoded by the Node codec provider', async () => {
   const decoded = await decodeIllustratorPrivateSource(makeClassicAiPdf({ privateCompression: 'zstd' }))
   assert.equal(decoded.compression, 'zstd')

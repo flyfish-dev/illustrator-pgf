@@ -44,6 +44,7 @@ class AstParser {
     let index = 0
     let pending: IllustratorAstValue[] = []
     let pendingStart = -1
+    let illustratorGradientData = false
     while (index < this.tokens.length) {
       this.budget.checkpoint('parse')
       const token = this.tokens[index]!
@@ -67,7 +68,18 @@ class AstParser {
           kind: 'operator', operator, operands: pending, span: spanFor(this.tokens, start, index + 1), tokenRange: [start, index + 1], raw: this.raw(start, index + 1),
         }
         this.addStatement(statement)
+        if (operator === 'Bd') illustratorGradientData = true
+        else if (operator === 'BD') illustratorGradientData = false
         pending = []; pendingStart = -1; index++
+        continue
+      }
+      // Illustrator gradient resources use PostScript's executable `[` mark
+      // without a matching `]`; the terminating BD operator consumes all marks.
+      // Outside a Bd/BD resource block, `[` keeps its ordinary array meaning.
+      if (token.kind === 'array-start' && illustratorGradientData) {
+        if (pendingStart < 0) pendingStart = index
+        pending.push({ kind: 'name', value: '[', literal: false, span: token.span, tokenIndex: index })
+        index++
         continue
       }
       const parsed = this.parseValue(index, 0)

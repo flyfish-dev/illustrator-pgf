@@ -49,7 +49,12 @@ interface PdfAnalysis {
   diagnostics: IllustratorDiagnostic[]
 }
 
-interface ParsedMarker { compression: 'none' | 'deflate' | 'zstd'; payloadOffset: number; marker?: string }
+interface ParsedMarker {
+  compression: 'none' | 'deflate' | 'zstd'
+  markerOffset: number
+  payloadOffset: number
+  marker?: string
+}
 
 function runtimeCodecs(runtime?: ContainerRuntimeOptions): IllustratorCodecProvider {
   if (runtime?.codecProvider !== undefined) return runtime.codecProvider
@@ -118,21 +123,65 @@ function markerLineEnd(bytes: Uint8Array, start: number): number {
   return -1
 }
 
-function parseCompressionMarker(bytes: Uint8Array): ParsedMarker {
-  const prefix = latin1Decode(bytes.subarray(0, Math.min(bytes.length, 256)))
-  if (/^%!PS-Adobe(?:-|\s)/u.test(prefix)) return { compression: 'none', payloadOffset: 0 }
-  for (const [expression, compression] of [
-    [/^%AI(?:12|13|14|15|16|17|18|19|20|21|22|23)_CompressedData\b/u, 'deflate'],
-    [/^%AI24_ZStandard_Data\b/u, 'zstd'],
-  ] as const) {
-    const match = expression.exec(prefix)
-    if (match !== null) {
-      const end = markerLineEnd(bytes, match.index + match[0].length)
-      if (end < 0) throw new IllustratorError('AI_PRIVATE_MARKER_TRUNCATED', 'decode', `${match[0]} marker has no line ending.`)
-      return { compression, payloadOffset: end, marker: match[0] }
+function parseCompressionMarker(bytes: Uint8Array, candidateOffsets: readonly number[] = [0]): ParsedMarker {
+  const matches: ParsedMarker[] = []
+  for (const candidateOffset of candidateOffsets) {
+    if (!Number.isSafeInteger(candidateOffset) || candidateOffset < 0 || candidateOffset >= bytes.length) continue
+    const prefix = latin1Decode(bytes.subarray(candidateOffset, Math.min(bytes.length, candidateOffset + 256)))
+    if (/^%!PS-Adobe(?:-|\s)/u.test(prefix)) {
+      matches.push({ compression: 'none', markerOffset: candidateOffset, payloadOffset: candidateOffset })
+      continue
+    }
+    for (const [expression, compression] of [
+      [/^%AI(?:12|13|14|15|16|17|18|19|20|21|22|23)_CompressedData/u, 'deflate'],
+      [/^%AI24_ZStandard_Data/u, 'zstd'],
+    ] as const) {
+      const match = expression.exec(prefix)
+      if (match === null) continue
+      const markerOffset = candidateOffset + match.index
+      const markerEnd = markerOffset + match[0].length
+      const firstPayloadByte = bytes[markerEnd]
+      if (firstPayloadByte === 0x0a) {
+        matches.push({ compression, markerOffset, payloadOffset: markerEnd + 1, marker: match[0] })
+        continue
+      }
+      if (firstPayloadByte === 0x0d) {
+        matches.push({
+          compression,
+          markerOffset,
+          payloadOffset: bytes[markerEnd + 1] === 0x0a ? markerEnd + 2 : markerEnd + 1,
+          marker: match[0],
+        })
+        continue
+      }
+      const adjacentDeflate = compression === 'deflate' && firstPayloadByte === 0x78
+      const adjacentZstd = compression === 'zstd' &&
+        firstPayloadByte === 0x28 && bytes[markerEnd + 1] === 0xb5 &&
+        bytes[markerEnd + 2] === 0x2f && bytes[markerEnd + 3] === 0xfd
+      if (adjacentDeflate || adjacentZstd) {
+        matches.push({ compression, markerOffset, payloadOffset: markerEnd, marker: match[0] })
+        continue
+      }
+      const end = markerLineEnd(bytes, markerEnd)
+      if (end < 0) throw new IllustratorError('AI_PRIVATE_MARKER_TRUNCATED', 'decode', `${match[0]} marker has neither a line ending nor a recognized adjacent codec header.`)
+      throw new IllustratorError('AI_PRIVATE_MARKER_INVALID', 'decode', `${match[0]} marker is followed by unexpected text before its payload.`)
     }
   }
+  if (matches.length > 1) {
+    throw new IllustratorError('AI_PRIVATE_MARKER_AMBIGUOUS', 'decode', 'Multiple private-source payload markers were found at Illustrator block boundaries.')
+  }
+  if (matches.length === 1) return matches[0]!
   throw new IllustratorError('AI_PRIVATE_MARKER_UNKNOWN', 'decode', 'Illustrator private source has no recognized PostScript, deflate, or zstd marker.')
+}
+
+function privateBlockOffsets(blocks: readonly IllustratorPrivateBlockInfo[]): number[] {
+  const offsets: number[] = []
+  let offset = 0
+  for (const block of blocks) {
+    offsets.push(offset)
+    offset += block.decodedBytes ?? 0
+  }
+  return offsets
 }
 
 function validateDecodedSource(bytes: Uint8Array, strictTermination: boolean): IllustratorDiagnostic[] {
@@ -320,7 +369,17 @@ async function analyzePdf(bytes: Uint8Array, options: InspectOptions, codecs: Il
     const extracted = await extractPackedSource(pdf, descriptor, limits, options.signal)
     packed = extracted.packed
     blocks = extracted.blocks
-    compression = parseCompressionMarker(packed).compression
+    const marker = parseCompressionMarker(packed, privateBlockOffsets(blocks))
+    compression = marker.compression
+    if (marker.markerOffset > 0) {
+      diagnostics.push(diagnostic(
+        'AI_PRIVATE_PREFIX_BLOCKS_SKIPPED',
+        'info',
+        'decode',
+        `Skipped ${marker.markerOffset} bytes of alternate private preview data before the native revisable-source payload.`,
+        { details: { prefixBytes: marker.markerOffset } },
+      ))
+    }
   }
   const kind = descriptor !== undefined ? 'pdf-private' : illustratorEvidence ? 'pdf-surface-only' : 'unknown'
   const fingerprint = sourceFingerprint(rawSource, kind, pdf.version, options.mime, creator)
@@ -431,7 +490,7 @@ export async function decodeIllustratorPrivateSource(
   if (analysis.inspection.kind === 'unknown') throw new IllustratorError('AI_NOT_ILLUSTRATOR', 'container', 'PDF has no validated Illustrator evidence or private source.')
   if (analysis.descriptor === undefined || analysis.packed === undefined) throw new IllustratorError('AI_PRIVATE_SOURCE_MISSING', 'container', 'Illustrator PDF contains no recoverable native private source.')
   budget.checkpoint('decode')
-  const marker = parseCompressionMarker(analysis.packed)
+  const marker = parseCompressionMarker(analysis.packed, privateBlockOffsets(analysis.blocks))
   const payload = analysis.packed.subarray(marker.payloadOffset)
   let decoded: Uint8Array
   if (marker.compression === 'none') decoded = payload

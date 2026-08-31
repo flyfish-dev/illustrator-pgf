@@ -44,6 +44,8 @@ class ByteWriter {
 
 export interface ClassicAiPdfOptions {
   privateCompression?: 'none' | 'deflate' | 'zstd'
+  privateMarkerSeparator?: 'newline' | 'adjacent'
+  privatePrefixBlock?: Uint8Array
   pdfFilter?: 'none' | 'flate' | 'unsupported'
   indirectLength?: boolean
   includePrivate?: boolean
@@ -56,9 +58,14 @@ export interface ClassicAiPdfOptions {
   source?: Uint8Array
 }
 
-function packedSource(source: Uint8Array, compression: ClassicAiPdfOptions['privateCompression']): Uint8Array {
-  if (compression === 'deflate') return concatBytes([latin1Encode('%AI12_CompressedData\n'), deflateSync(source)])
-  if (compression === 'zstd') return concatBytes([latin1Encode('%AI24_ZStandard_Data\n'), zstdCompressSync(source)])
+function packedSource(
+  source: Uint8Array,
+  compression: ClassicAiPdfOptions['privateCompression'],
+  separator: ClassicAiPdfOptions['privateMarkerSeparator'],
+): Uint8Array {
+  const suffix = separator === 'adjacent' ? '' : '\n'
+  if (compression === 'deflate') return concatBytes([latin1Encode(`%AI12_CompressedData${suffix}`), deflateSync(source)])
+  if (compression === 'zstd') return concatBytes([latin1Encode(`%AI24_ZStandard_Data${suffix}`), zstdCompressSync(source)])
   return source
 }
 
@@ -71,8 +78,13 @@ function writeStreamObject(writer: ByteWriter, offsets: Map<number, number>, num
 
 export function makeClassicAiPdf(options: ClassicAiPdfOptions = {}): Uint8Array {
   const includePrivate = options.includePrivate ?? true
+  const privatePrefixBlock = options.privatePrefixBlock
   const source = options.source ?? DIRECT_SOURCE_BYTES
-  const packed = packedSource(source, options.privateCompression ?? 'none')
+  const packed = packedSource(
+    source,
+    options.privateCompression ?? 'none',
+    options.privateMarkerSeparator ?? 'newline',
+  )
   const pdfFilter = options.pdfFilter ?? 'none'
   const encoded = pdfFilter === 'flate' ? deflateSync(packed) : packed
   const filter = pdfFilter === 'flate' ? '/Filter /FlateDecode' : pdfFilter === 'unsupported' ? '/Filter /LZWDecode' : ''
@@ -88,9 +100,17 @@ export function makeClassicAiPdf(options: ClassicAiPdfOptions = {}): Uint8Array 
   writer.write('3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 100] >>\nendobj\n')
   if (includePrivate) {
     offsets.set(4, writer.length)
-    writer.write(`4 0 obj\n<< /NumBlock ${options.numBlock ?? 1} /AIPrivateData${options.blockPart ?? 1} 5 ${options.blockGeneration ?? 0} R >>\nendobj\n`)
+    const privateDictionary = privatePrefixBlock === undefined
+      ? `/NumBlock ${options.numBlock ?? 1} /AIPrivateData${options.blockPart ?? 1} 5 ${options.blockGeneration ?? 0} R`
+      : `/NumBlock ${options.numBlock ?? 2} /AIPrivateData1 5 0 R /AIPrivateData2 9 0 R`
+    writer.write(`4 0 obj\n<< ${privateDictionary} >>\nendobj\n`)
     const lengthValue = options.indirectLength === true ? '7 0 R' : String(encoded.byteLength)
-    writeStreamObject(writer, offsets, 5, encoded, `/Length ${lengthValue} ${filter}`)
+    if (privatePrefixBlock === undefined) {
+      writeStreamObject(writer, offsets, 5, encoded, `/Length ${lengthValue} ${filter}`)
+    } else {
+      writeStreamObject(writer, offsets, 5, privatePrefixBlock, `/Length ${privatePrefixBlock.byteLength}`)
+      writeStreamObject(writer, offsets, 9, encoded, `/Length ${lengthValue} ${filter}`)
+    }
   }
   offsets.set(6, writer.length)
   writer.write(`6 0 obj\n<< /Creator (${options.creator ?? 'Adobe Illustrator 28.0'}) >>\nendobj\n`)

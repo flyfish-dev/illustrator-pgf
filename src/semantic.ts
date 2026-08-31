@@ -476,16 +476,20 @@ class SceneBuilder {
   setTransform(matrix: Matrix): void { this.state.transform = cloneMatrix(matrix) }
 
   beginLayer(operands: readonly IllustratorAstValue[], span: SourceSpan, statementIndex: number): void {
-    const values = operands.slice(-10).map(numberValue)
-    const valid = values.length === 10 && values.every((value) => value !== undefined)
-    const flags = valid ? values as number[] : [1, 1, 1, 1, 0, 0, 0, 79, 128, 255]
+    const extended = operands.slice(-14).map(numberValue)
+    const compact = operands.slice(-10).map(numberValue)
+    const extendedValid = extended.length === 14 && extended.every((value) => value !== undefined)
+    const compactValid = compact.length === 10 && compact.every((value) => value !== undefined)
+    const valid = extendedValid || compactValid
+    const flags = extendedValid ? extended as number[] : compactValid ? compact as number[] : [1, 1, 1, 1, 0, 0, 0, 79, 128, 255]
+    const colorOffset = extendedValid ? 8 : 7
     if (!valid) this.diagnostics.push(diagnostic('AI_LAYER_FLAGS_INVALID', 'warning', 'lower', 'Layer flags were incomplete; safe defaults were used.', { sourceSpan: span }))
     const appearance = emptyAppearance()
     const node = {
       ...this.nodeBase(span, appearance, 'high', [statementIndex]),
       type: 'Layer', children: [], preview: flags[1] !== 0,
       visible: flags[0] !== 0, locked: flags[2] === 0, printable: flags[3] !== 0,
-      color: { kind: 'rgb', red: clamp(flags[7]! / 255), green: clamp(flags[8]! / 255), blue: clamp(flags[9]! / 255), alpha: 1 },
+      color: { kind: 'rgb', red: clamp(flags[colorOffset]! / 255), green: clamp(flags[colorOffset + 1]! / 255), blue: clamp(flags[colorOffset + 2]! / 255), alpha: 1 },
     } as IllustratorLayerNode
     node.layerId = node.id
     this.addNode(node); this.layers.push(node)
@@ -713,14 +717,33 @@ function setSpotColor(target: 'fill' | 'stroke'): IllustratorOperatorDefinition[
   }
 }
 
+function setIllustratorCustomColor(target: 'fill' | 'stroke'): IllustratorOperatorDefinition['handler'] {
+  return (context) => {
+    const name = [...context.operands].reverse().map(stringValue).find((value) => value !== undefined) ?? 'Unnamed Ink'
+    const numeric = context.operands.map(numberValue).filter((value): value is number => value !== undefined)
+    const tint = clamp(numeric.at(-1) ?? 1)
+    // AI5+ RGB documents retain both a four-channel CMYK fallback and the
+    // authored RGB alternate before the custom-color name.
+    const alternate: IllustratorPaint = numeric.length >= 7
+      ? { kind: 'rgb', red: clamp(numeric[4]!), green: clamp(numeric[5]!), blue: clamp(numeric[6]!), alpha: 1 }
+      : numeric.length >= 4
+        ? { kind: 'cmyk', cyan: clamp(numeric[0]!), magenta: clamp(numeric[1]!), yellow: clamp(numeric[2]!), black: clamp(numeric[3]!), alpha: 1 }
+        : clonePaint(context.builder.state[target])
+    context.builder.state[target] = { kind: 'spot', name, tint, alternate, alpha: 1 }
+    context.builder.colorMode = alternate.kind === 'rgb' ? 'rgb' : 'cmyk'
+  }
+}
+
 export function createDefaultOperatorRegistry(): IllustratorOperatorRegistry {
   const registry = new IllustratorOperatorRegistry()
   register(registry, 'm', ['number','number'], (context) => { const v = requireNumbers(context, 2); if (v) context.builder.moveTo({ x: v[0]!, y: v[1]! }, context.statement.span, context.statementIndex) }, { stateWrites: ['path'], fixtureId: 'path-move' })
   register(registry, 'moveto', ['number','number'], registry.resolve('m')!.handler, { stateWrites: ['path'], fixtureId: 'path-moveto' })
   register(registry, 'l', ['number','number'], (context) => { const v = requireNumbers(context, 2); if (v) context.builder.lineTo({ x: v[0]!, y: v[1]! }, context.statement.span, context.statementIndex) }, { stateReads: ['path'], stateWrites: ['path'], fixtureId: 'path-line' })
   register(registry, 'lineto', ['number','number'], registry.resolve('l')!.handler, { stateReads: ['path'], stateWrites: ['path'], fixtureId: 'path-lineto' })
+  register(registry, 'L', ['number','number'], registry.resolve('l')!.handler, { family: 'ai5', stateReads: ['path'], stateWrites: ['path'], fixtureId: 'path-line-ai' })
   register(registry, 'c', ['number','number','number','number','number','number'], (context) => { const v = requireNumbers(context, 6); if (v) context.builder.cubicTo({ x: v[0]!, y: v[1]! }, { x: v[2]!, y: v[3]! }, { x: v[4]!, y: v[5]! }, context.statement.span, context.statementIndex) }, { stateReads: ['path'], stateWrites: ['path'], fixtureId: 'path-cubic' })
   register(registry, 'curveto', ['number','number','number','number','number','number'], registry.resolve('c')!.handler, { stateReads: ['path'], stateWrites: ['path'], fixtureId: 'path-curveto' })
+  register(registry, 'C', ['number','number','number','number','number','number'], registry.resolve('c')!.handler, { family: 'ai5', stateReads: ['path'], stateWrites: ['path'], fixtureId: 'path-cubic-ai' })
   register(registry, 'v', ['number','number','number','number'], (context) => { const v = requireNumbers(context, 4); if (v) { const current = context.builder.currentPoint(); context.builder.cubicTo(current, { x: v[0]!, y: v[1]! }, { x: v[2]!, y: v[3]! }, context.statement.span, context.statementIndex) } }, { family: 'ai3', stateReads: ['path'], stateWrites: ['path'], fixtureId: 'path-cubic-v' })
   register(registry, 'y', ['number','number','number','number'], (context) => { const v = requireNumbers(context, 4); if (v) { const end = { x: v[2]!, y: v[3]! }; context.builder.cubicTo({ x: v[0]!, y: v[1]! }, end, end, context.statement.span, context.statementIndex) } }, { family: 'ai3', stateReads: ['path'], stateWrites: ['path'], fixtureId: 'path-cubic-y' })
   for (const operator of ['h', 'closepath']) register(registry, operator, [], ({ builder, statementIndex }) => builder.closePath(statementIndex), { stateReads: ['path'], stateWrites: ['path'], fixtureId: `path-close-${operator}` })
@@ -730,6 +753,12 @@ export function createDefaultOperatorRegistry(): IllustratorOperatorRegistry {
     ['f*',true,false,'evenodd',false], ['eofill',true,false,'evenodd',false], ['B',true,true,'nonzero',false], ['B*',true,true,'evenodd',false],
     ['b',true,true,'nonzero',true], ['b*',true,true,'evenodd',true],
   ] as const) register(registry, operator, [], paintHandler(fill, stroke, rule, close), { stateReads: ['path','paint'], stateWrites: ['path'], fixtureId: `path-paint-${operator}` })
+  register(registry, '*', ['string'], (context) => {
+    const operation = tailString(context.operands)
+    const dynamic = operation === undefined ? undefined : registry.resolve(operation)
+    if (dynamic !== undefined && ['n','N','S','s','f','F','B','b','f*','B*','b*'].includes(operation!)) dynamic.handler(context)
+    else context.builder.handleUnknownOperator(context.statement, context.statementIndex)
+  }, { family: 'ai5', stateReads: ['path','paint'], stateWrites: ['path'], fixtureId: 'path-paint-indirect' })
   register(registry, 'W', [], ({ builder }) => builder.markClip('nonzero'), { stateReads: ['path'], stateWrites: ['clipping'], fixtureId: 'clip-nonzero' })
   register(registry, 'W*', [], ({ builder }) => builder.markClip('evenodd'), { stateReads: ['path'], stateWrites: ['clipping'], fixtureId: 'clip-evenodd' })
   register(registry, 'clip', [], ({ builder }) => builder.markClip('nonzero'), { stateReads: ['path'], stateWrites: ['clipping'], fixtureId: 'clip-ps' })
@@ -754,6 +783,8 @@ export function createDefaultOperatorRegistry(): IllustratorOperatorRegistry {
   ] as const) register(registry, operator, Array(kind === 'gray' ? 1 : kind === 'rgb' ? 3 : 4).fill('number') as IllustratorOperandKind[], setProcessColor(target, kind), { stateWrites: [target, 'color-mode'], fixtureId: `paint-${operator}` })
   register(registry, 'x', ['any'], setSpotColor('fill'), { family: 'ai3', variadic: true, stateWrites: ['fill','color-mode'], fidelity: 'partial', fixtureId: 'paint-custom-fill' })
   register(registry, 'X', ['any'], setSpotColor('stroke'), { family: 'ai3', variadic: true, stateWrites: ['stroke','color-mode'], fidelity: 'partial', fixtureId: 'paint-custom-stroke' })
+  register(registry, 'Xk', ['any'], setIllustratorCustomColor('fill'), { family: 'ai5', variadic: true, stateWrites: ['fill','color-mode'], fidelity: 'partial', fixtureId: 'paint-custom-fill-ai5' })
+  register(registry, 'XK', ['any'], setIllustratorCustomColor('stroke'), { family: 'ai5', variadic: true, stateWrites: ['stroke','color-mode'], fidelity: 'partial', fixtureId: 'paint-custom-stroke-ai5' })
   register(registry, 'w', ['number'], (context) => { const v = requireNumbers(context, 1); if (v && v[0]! >= 0) context.builder.state.lineWidth = v[0]! }, { stateWrites: ['stroke'], fixtureId: 'stroke-width' })
   register(registry, 'setlinewidth', ['number'], registry.resolve('w')!.handler, { stateWrites: ['stroke'], fixtureId: 'stroke-width-ps' })
   register(registry, 'J', ['number'], (context) => { const v = requireNumbers(context, 1); if (v) context.builder.state.lineCap = v[0] === 1 ? 'round' : v[0] === 2 ? 'square' : 'butt' }, { stateWrites: ['stroke'], fixtureId: 'stroke-cap' })
@@ -797,6 +828,10 @@ export function createDefaultOperatorRegistry(): IllustratorOperatorRegistry {
   register(registry, 'ca', ['number'], (context) => { const v = requireNumbers(context, 1); if (v) context.builder.state.fillOpacity = clamp(v[0]!) }, { family: 'ai9', stateWrites: ['opacity'], fidelity: 'partial', fixtureId: 'opacity-fill' })
   register(registry, 'CA', ['number'], (context) => { const v = requireNumbers(context, 1); if (v) context.builder.state.strokeOpacity = clamp(v[0]!) }, { family: 'ai9', stateWrites: ['opacity'], fidelity: 'partial', fixtureId: 'opacity-stroke' })
   register(registry, 'setopacityalpha', ['number'], (context) => { const v = requireNumbers(context, 1); if (v) context.builder.state.opacity = clamp(v[0]!) }, { family: 'ai9', stateWrites: ['opacity'], fidelity: 'partial', fixtureId: 'opacity-object' })
+  register(registry, 'Xy', ['any'], (context) => {
+    const values = context.operands.map(numberValue).filter((value): value is number => value !== undefined)
+    if (values.length >= 2) context.builder.state.opacity = clamp(values[1]!)
+  }, { family: 'ai9', variadic: true, stateWrites: ['opacity','blend'], fidelity: 'partial', fixtureId: 'opacity-object-ai' })
   register(registry, 'BM', ['name'], ({ builder, operands }) => { builder.state.blendMode = stringValue(operands.at(-1)) ?? 'normal' }, { family: 'ai9', stateWrites: ['blend'], fidelity: 'partial', fixtureId: 'blend-mode' })
   register(registry, 'op', ['boolean'], ({ builder, operands }) => { const value = operands.at(-1); if (value?.kind === 'boolean') builder.state.overprintFill = value.value }, { stateWrites: ['overprint'], fidelity: 'partial', fixtureId: 'overprint-fill' })
   register(registry, 'OP', ['boolean'], ({ builder, operands }) => { const value = operands.at(-1); if (value?.kind === 'boolean') builder.state.overprintStroke = value.value }, { stateWrites: ['overprint'], fidelity: 'partial', fixtureId: 'overprint-stroke' })
@@ -805,7 +840,7 @@ export function createDefaultOperatorRegistry(): IllustratorOperatorRegistry {
     builder.state = { transform: cloneMatrix(), fill: BLACK_PAINT, stroke: NONE_PAINT, lineWidth: 1, lineCap: 'butt', lineJoin: 'miter', miterLimit: 10, dashArray: [], dashOffset: 0, fillOpacity: 1, strokeOpacity: 1, opacity: 1, blendMode: 'normal', overprintFill: false, overprintStroke: false, fillRule: 'nonzero' }
   }, { stateWrites: ['graphics-state'], produces: 'none', fixtureId: 'graphics-init' })
   const harmless = [
-    'def','bind','begin','end','dict','array','string','dup','exch','pop','put','get','load','where','if','ifelse','for','repeat','loop','exit','currentdict','readonly','executeonly','cvx','cvlit','save','restore','setpagedevice','showpage','findfont','scalefont','setfont','mark','cleartomark','count','index','roll','copy','known','maxlength','currentfile','readstring','readhexstring','flushfile','setflat','sethalftone','setscreen','settransfer','setcolortransfer','setcolorspace','setcolor','setrenderingintent','ri','ddef','xput','npop','Adobe_Illustrator_AI5','Adobe_Illustrator_AI8','terminate','exec','currentpoint','charpath','stringwidth','widthshow','ashow','awidthshow','kshow','rmoveto','rlineto','rcurveto',
+    'def','bind','begin','end','dict','array','string','dup','exch','pop','put','get','load','where','if','ifelse','for','repeat','loop','exit','currentdict','readonly','executeonly','cvx','cvlit','save','restore','setpagedevice','showpage','findfont','scalefont','setfont','mark','cleartomark','count','index','roll','copy','known','maxlength','currentfile','readstring','readhexstring','flushfile','setflat','sethalftone','setscreen','settransfer','setcolortransfer','setcolorspace','setcolor','setrenderingintent','ri','ddef','xput','npop','Adobe_Illustrator_AI5','Adobe_Illustrator_AI8','terminate','exec','currentpoint','charpath','stringwidth','widthshow','ashow','awidthshow','kshow','rmoveto','rlineto','rcurveto',',',':',';',
   ]
   for (const operator of harmless) if (registry.resolve(operator) === undefined) register(registry, operator, [], () => {}, { variadic: true, produces: 'none', fidelity: 'structure-only', fixtureId: `program-${operator.replace(/[^a-z0-9]/giu, '_')}` })
   return registry

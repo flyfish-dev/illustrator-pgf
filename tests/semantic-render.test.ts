@@ -37,6 +37,43 @@ test('paths, appearance, layer hierarchy and artboard lower into Scene IR', asyn
   assert.equal(path?.layerId, layer?.id)
 })
 
+test('extended Illustrator layer flags preserve visibility and layer color', async () => {
+  const scene = await lowerIllustratorSource(new TextEncoder().encode([
+    '%!PS-Adobe-3.0',
+    '%%Creator: Adobe Illustrator 19.0',
+    '1 1 0 1 0 0 1 0 79 128 255 0 50 0 Lb',
+    '(Visible Layer) Ln',
+    'LB',
+    '%%EOF',
+  ].join('\n')))
+  const layer = scene.layers[0]
+  assert.equal(layer?.visible, true)
+  assert.equal(layer?.locked, true)
+  assert.equal(layer?.printable, true)
+  assert.deepEqual(layer?.color, { kind: 'rgb', red: 79 / 255, green: 128 / 255, blue: 1, alpha: 1 })
+})
+
+test('AI5 custom RGB alternates and Xy opacity reach painted paths', async () => {
+  const scene = await lowerIllustratorSource(new TextEncoder().encode([
+    '%!PS-Adobe-3.0',
+    '%%Creator: Adobe Illustrator 19.0',
+    '0.4 0.3 0.2 0.1 0.8 0.6 0.4 (Brand) 0 1 Xk',
+    '0 0.25 0 0 0 Xy',
+    '0 0 m',
+    '10 0 L',
+    '10 10 L',
+    '0 10 L',
+    'f',
+    '%%EOF',
+  ].join('\n')))
+  const path = nodes(scene).find((node): node is IllustratorPathNode => node.type === 'Path')
+  assert.equal(path?.appearance.opacity, 0.25)
+  assert.deepEqual(path?.appearance.fills[0]?.paint, {
+    kind: 'spot', name: 'Brand', tint: 1,
+    alternate: { kind: 'rgb', red: 0.8, green: 0.6, blue: 0.4, alpha: 1 }, alpha: 1,
+  })
+})
+
 test('text remains native structured text with explicit partial fidelity', async () => {
   const scene = await lowerIllustratorSource(DIRECT_SOURCE_BYTES)
   const text = nodes(scene).find((node): node is IllustratorTextNode => node.type === 'Text')
