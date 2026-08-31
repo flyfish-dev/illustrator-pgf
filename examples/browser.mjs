@@ -1,4 +1,4 @@
-import { createIllustratorEngine } from '@flyfish/illustrator-pgf'
+import { createIllustratorEngine } from 'illustrator-pgf'
 
 const input = document.querySelector('#file')
 const canvas = document.querySelector('#canvas')

@@ -1,5 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises'
-import { createIllustratorEngine } from '@flyfish/illustrator-pgf/node'
+import { createIllustratorEngine } from 'illustrator-pgf/node'
 
 const file = process.argv[2]
 if (!file) throw new Error('Usage: node examples/node.mjs input.ai')

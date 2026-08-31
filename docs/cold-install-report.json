@@ -1,9 +1,9 @@
 {
   "ok": true,
-  "installed": "@flyfish/illustrator-pgf@0.1.0",
+  "installed": "illustrator-pgf@0.1.0",
   "smoke": {
     "ok": true,
-    "package": "@flyfish/illustrator-pgf@0.1.0",
+    "package": "illustrator-pgf@0.1.0",
     "runtime": "v24.20.0",
     "checks": {
       "inspection": true,
@@ -25,12 +25,12 @@
   "exports": {
     "ok": true,
     "required": [
-      "node_modules/@flyfish/illustrator-pgf/dist/src/index.d.ts",
-      "node_modules/@flyfish/illustrator-pgf/dist/src/node.d.ts",
-      "node_modules/@flyfish/illustrator-pgf/dist/src/worker-entry.js",
-      "node_modules/@flyfish/illustrator-pgf/dist/src/worker-runtime.js",
-      "node_modules/@flyfish/illustrator-pgf/dist/integrations/file-viewer/index.js",
-      "node_modules/@flyfish/illustrator-pgf/examples/illustrator-pgf.worker.mjs"
+      "node_modules/illustrator-pgf/dist/src/index.d.ts",
+      "node_modules/illustrator-pgf/dist/src/node.d.ts",
+      "node_modules/illustrator-pgf/dist/src/worker-entry.js",
+      "node_modules/illustrator-pgf/dist/src/worker-runtime.js",
+      "node_modules/illustrator-pgf/dist/integrations/file-viewer/index.js",
+      "node_modules/illustrator-pgf/examples/illustrator-pgf.worker.mjs"
     ]
   },
   "cli": {

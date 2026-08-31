@@ -2,7 +2,7 @@
 
 ## 自动化
 
-- 最终测试：55 passed / 0 failed / 0 skipped；Node.js v24.20.0 下 TAP 总耗时 84.701875 ms。
+- 最终测试：55 passed / 0 failed / 0 skipped；Node.js v24.20.0 下 TAP 总耗时 86.319334 ms。
 - TypeScript：strict 构建和 `tsc --noEmit` 通过。
 - 安装：Node.js 22/24 下 `npm ci --ignore-scripts` 与 `npm run check` 通过，0 个依赖漏洞。
 - 样例：351 字节 Illustrator PostScript，136 个 token；Lossless AST 低级 API 与 session API 均逐字节往返。
@@ -12,22 +12,22 @@
 
 ## npm tarball
 
-- 文件：`flyfish-illustrator-pgf-0.1.0.tgz`
-- 打包大小：138,389 bytes
-- 解包大小：698,836 bytes
+- 文件：`illustrator-pgf-0.1.0.tgz`
+- 打包大小：138,355 bytes
+- 解包大小：698,737 bytes
 - 文件数：114
-- npm SHA-1：`f5bcbc13a827f99110f86cf629651eefac58a94c`
-- 完整性：`sha512-b61LF/i8xTNayRGX/r5o+7Bf2lax5gTr+sVAjyVE/3FnzBAIAr1FHtH5uyIN9Of4hKWDenVX6OH+iym+mB415Q==`
+- npm SHA-1：`b1274bec83bcb3a0f1acd626f434c60c9d9be5f3`
+- 完整性：`sha512-esD9udSw8ImOVWB/jZuQLXpb8WE/qOHvt4Y+ZyGKgxrOzRCbaoovf8woOpKpag159VxNjn1QCxgs07eCrGlz7w==`
 
 ## 冷安装
 
 在空目录使用 Node.js v24.20.0 从最终 tgz 安装并验证：
 
-- `@flyfish/illustrator-pgf`
-- `@flyfish/illustrator-pgf/node`
-- `@flyfish/illustrator-pgf/worker`
-- `@flyfish/illustrator-pgf/worker-runtime`
-- `@flyfish/illustrator-pgf/file-viewer-adapter`
+- `illustrator-pgf`
+- `illustrator-pgf/node`
+- `illustrator-pgf/worker`
+- `illustrator-pgf/worker-runtime`
+- `illustrator-pgf/file-viewer-adapter`
 - 根入口和 Node 入口 `.d.ts`
 - `illustrator-pgf` CLI
 

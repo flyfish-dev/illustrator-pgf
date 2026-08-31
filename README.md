@@ -1,4 +1,4 @@
-# @flyfish/illustrator-pgf
+# illustrator-pgf
 
 一个独立、离线优先、带资源预算的 Adobe Illustrator 原生 PGF/private-source 解析与预览 SDK。它把 Illustrator 文件中的 PDF-compatible 表面与原生可编辑场景严格分开，并提供：
 
@@ -15,13 +15,13 @@
 ## 安装
 
 ```bash
-npm install @flyfish/illustrator-pgf
+npm install illustrator-pgf
 ```
 
 ## 浏览器：生产 Worker 路径
 
 ```ts
-import { createIllustratorEngine } from '@flyfish/illustrator-pgf'
+import { createIllustratorEngine } from 'illustrator-pgf'
 
 const engine = await createIllustratorEngine({
   workerFactory: () => new Worker(
@@ -54,7 +54,7 @@ engine.dispose()
 默认 Worker 不访问网络。针对 `%AI24_ZStandard_Data`，宿主应在自定义 Worker 入口中注入本地 zstd 解码器：
 
 ```ts
-import { installIllustratorWorker } from '@flyfish/illustrator-pgf/worker-runtime'
+import { installIllustratorWorker } from 'illustrator-pgf/worker-runtime'
 import { decodeLocalZstd } from './local-zstd-adapter.js'
 
 installIllustratorWorker(self, {
@@ -71,7 +71,7 @@ installIllustratorWorker(self, {
 import {
   createIllustratorEngine,
   inspectIllustrator,
-} from '@flyfish/illustrator-pgf/node'
+} from 'illustrator-pgf/node'
 
 const inspection = await inspectIllustrator(bytes)
 const engine = await createIllustratorEngine()
@@ -96,7 +96,7 @@ import {
   parseIllustratorSource,
   lowerIllustratorAst,
   renderIllustratorScene,
-} from '@flyfish/illustrator-pgf'
+} from 'illustrator-pgf'
 ```
 
 `Lossless AST` 与 `Scene IR` 分离：前者负责保留原始输入和未知扩展，后者只表达已声明的语义能力与明确降级。

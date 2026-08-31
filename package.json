@@ -1,5 +1,5 @@
 {
-  "name": "@flyfish/illustrator-pgf",
+  "name": "illustrator-pgf",
   "version": "0.1.0",
   "description": "Bounded, byte-lossless Adobe Illustrator native PGF/private-source parser, Scene IR and browser renderer SDK",
   "type": "module",

@@ -1,13 +1,13 @@
 [
   {
-    "id": "@flyfish/illustrator-pgf@0.1.0",
-    "name": "@flyfish/illustrator-pgf",
+    "id": "illustrator-pgf@0.1.0",
+    "name": "illustrator-pgf",
     "version": "0.1.0",
-    "size": 138389,
-    "unpackedSize": 698836,
-    "shasum": "f5bcbc13a827f99110f86cf629651eefac58a94c",
-    "integrity": "sha512-b61LF/i8xTNayRGX/r5o+7Bf2lax5gTr+sVAjyVE/3FnzBAIAr1FHtH5uyIN9Of4hKWDenVX6OH+iym+mB415Q==",
-    "filename": "flyfish-illustrator-pgf-0.1.0.tgz",
+    "size": 138355,
+    "unpackedSize": 698737,
+    "shasum": "b1274bec83bcb3a0f1acd626f434c60c9d9be5f3",
+    "integrity": "sha512-esD9udSw8ImOVWB/jZuQLXpb8WE/qOHvt4Y+ZyGKgxrOzRCbaoovf8woOpKpag159VxNjn1QCxgs07eCrGlz7w==",
+    "filename": "illustrator-pgf-0.1.0.tgz",
     "files": [
       {
         "path": "CHANGELOG.md",
@@ -26,7 +26,7 @@
       },
       {
         "path": "README.md",
-        "size": 5454,
+        "size": 5400,
         "mode": 420
       },
       {
@@ -501,7 +501,7 @@
       },
       {
         "path": "docs/api.md",
-        "size": 2532,
+        "size": 2523,
         "mode": 420
       },
       {
@@ -561,22 +561,22 @@
       },
       {
         "path": "examples/browser.mjs",
-        "size": 812,
+        "size": 803,
         "mode": 420
       },
       {
         "path": "examples/illustrator-pgf.worker.mjs",
-        "size": 115,
+        "size": 106,
         "mode": 420
       },
       {
         "path": "examples/node.mjs",
-        "size": 520,
+        "size": 511,
         "mode": 420
       },
       {
         "path": "package.json",
-        "size": 2849,
+        "size": 2840,
         "mode": 420
       }
     ],

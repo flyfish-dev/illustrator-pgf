@@ -7,7 +7,7 @@ inspectIllustrator(input, options?)
 createIllustratorEngine(options?)
 ```
 
-浏览器 `createIllustratorEngine()` 默认要求 Dedicated Worker。Node 请从 `@flyfish/illustrator-pgf/node` 导入，它返回使用同一核心实现的 direct engine。
+浏览器 `createIllustratorEngine()` 默认要求 Dedicated Worker。Node 请从 `illustrator-pgf/node` 导入，它返回使用同一核心实现的 direct engine。
 
 生产构建建议通过 `workerFactory` 在应用代码中直接创建 Worker，使构建器识别 worker 入口：
 
