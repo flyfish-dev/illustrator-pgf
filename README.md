@@ -125,6 +125,8 @@ illustrator-pgf operators operator-coverage.json
 
 当前细分状态见 [`docs/support-matrix.md`](docs/support-matrix.md)，实现与未通过门禁见 [`docs/implementation-report.md`](docs/implementation-report.md)。
 
+后续原生场景高保真开发按 [`docs/native-pgf-high-fidelity-development-plan.md`](docs/native-pgf-high-fidelity-development-plan.md) 执行。该文档给出了工作包、API 收口、Oracle、性能、安全和发布验收标准。
+
 ## 安全边界
 
 解析器不执行 PostScript 程序，不使用 `eval`/`Function`，不执行 Illustrator 插件，不主动读取本地路径或访问网络。所有输入均受对象数、解压输出、token、statement、node、path point、嵌套、图片、渲染像素、Worker 时间与缓存预算约束。

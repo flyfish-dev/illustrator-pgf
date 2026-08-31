@@ -30,17 +30,19 @@
 
 ## 自动化结果
 
-最终发布检查已重新执行：**55 tests / 55 passed / 0 failed**；TypeScript strict build、npm tarball dry-run、实际打包和隔离目录冷安装均通过。完整 TAP 输出见 `docs/test-report.txt`，CLI 产物见 `corpus/synthetic/minimal.*`，操作符覆盖见 `docs/operator-coverage.json`。
+当前工作树已重新执行 `npm run check`：**63 tests / 63 passed / 0 failed**；TypeScript strict build 和 npm tarball dry-run 均通过。`docs/test-report.txt` 保留 0.1.0 初始基线的 55 项 TAP 输出，不再作为当前测试数量依据；CLI 产物见 `corpus/synthetic/minimal.*`，操作符覆盖见 `docs/operator-coverage.json`。
 
 覆盖包括：
 
 - classic xref、xref stream、object stream、incremental update；
 - PDF Flate 和间接 Length；
 - private none/deflate/zstd；
+- marker 与 codec header 紧邻、alternate private block 前缀；
 - NumBlock/序号/代数/filter/encryption/page cycle；
 - CR/LF/CRLF、嵌套字符串、name escape、hex/ASCII85/binary；
+- Illustrator `%%BeginData`、pseudo-comment resource 和 gradient data mark；
 - 字节级 AST roundtrip 和 trailing/unknown 保存；
-- 路径、compound、clip、layer、text matrix、资源降级；
+- 路径、compound、clip、extended layer flags、AI5 custom color/opacity、text matrix、资源降级；
 - SVG 安全/确定性和 Canvas 调用；
 - Worker session、Abort、timeout、协议错误与 dispose；
 - 64 个确定性 mutation 输入。
@@ -58,6 +60,6 @@
 | 性能/内存 | CLI benchmark 已实现；规范目标设备报告 pending |
 | fuzz/no-network/三浏览器 | mutation 基线已有；长 fuzz 与 browser matrix pending |
 | API/文档/包/许可证 | 完成；tarball、子路径 exports、`.d.ts`、CLI 和冷安装通过 |
-| File Viewer | 独立适配器完成；真实主仓集成 pending |
+| File Viewer | 独立适配器完成；本地主仓真实 AI/AIT、PDF/native 切换、图层、移动端和浏览器 zstd 已验证；独立包发布与公开发布门禁 pending |
 
 因此版本保持 `0.1.0` 开发基线，不发布为夸大的“稳定完整版”。

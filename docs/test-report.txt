@@ -1,3 +1,6 @@
+# Archived test report: initial 0.1.0 baseline (55 tests)
+# Current validation is `npm run check`: 63 tests passed on 2026-08-31.
+
 npm warn Unknown user config "shamefully-hoist". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
 npm warn Unknown user config "auto-install-peers". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
 npm warn Unknown user config "strict-peer-dependencies". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.

@@ -13,6 +13,7 @@
 - [x] CLI inspect/scene/svg/support/benchmark smoke test
 - [x] package exports and `.d.ts` smoke test
 - [x] license and third-party notice included
+- [x] File Viewer 主仓本地真实集成验证；独立包发布与公开发布门禁仍待执行
 
 ## 稳定版前必须补齐
 
@@ -25,6 +26,5 @@
 - [ ] 规范设备上的 P95 parse/visible/fps 报告
 - [ ] 长时间 fuzz 和内存回落报告
 - [ ] browser zstd WASM 资产、版本校验和许可证清单
-- [ ] File Viewer 主仓真实集成验证
 
 任一未完成项都不得被文案隐去或用 PDF surface 成功代替。
