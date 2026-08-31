@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "generatedFor": "feat/native-pgf-plan-complete-v3",
+  "policy": {
+    "unknownSyntax": "preserve-and-diagnose",
+    "unsupportedVisibleObjects": "omit-without-placeholder",
+    "externalResources": "explicit-resolver-only",
+    "postScriptExecution": "forbidden",
+    "highFidelityPromotion": "all-required-evidence-must-pass"
+  },
+  "features": [
+    {
+      "id": "container.direct-postscript",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["existing-regression-suite"]
+    },
+    {
+      "id": "container.pdf-compatible-ai",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["existing-regression-suite"]
+    },
+    {
+      "id": "codec.deflate",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["existing-regression-suite"]
+    },
+    {
+      "id": "codec.browser-zstd",
+      "status": "implemented-evidence-gated",
+      "fidelity": "partial",
+      "missingEvidence": ["cross-browser", "real-illustrator-fixture"]
+    },
+    {
+      "id": "syntax.lossless-ast",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["byte-roundtrip-tests"]
+    },
+    {
+      "id": "syntax.section-map",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["synthetic-fixture"]
+    },
+    {
+      "id": "geometry.paths-compounds-clips",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["existing-regression-suite", "synthetic-fixture"]
+    },
+    {
+      "id": "geometry.exact-cubic-bounds",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["analytic-unit-test"]
+    },
+    {
+      "id": "artboards.modern-metadata",
+      "status": "implemented-evidence-gated",
+      "fidelity": "partial",
+      "missingEvidence": ["real-illustrator-fixture", "structure-oracle"]
+    },
+    {
+      "id": "paint.process-colors",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["existing-regression-suite"]
+    },
+    {
+      "id": "paint.spot-tint",
+      "status": "implemented-evidence-gated",
+      "fidelity": "partial",
+      "missingEvidence": ["visual-oracle", "icc-profile-corpus"]
+    },
+    {
+      "id": "paint.icc-managed-output",
+      "status": "structure-only",
+      "fidelity": "structure-only",
+      "missingEvidence": ["icc-engine", "visual-oracle"]
+    },
+    {
+      "id": "resources.gradients",
+      "status": "implemented-evidence-gated",
+      "fidelity": "partial",
+      "missingEvidence": ["real-illustrator-fixture", "visual-oracle"]
+    },
+    {
+      "id": "resources.patterns",
+      "status": "structure-only",
+      "fidelity": "structure-only",
+      "missingEvidence": ["tiling-renderer", "visual-oracle"]
+    },
+    {
+      "id": "resources.embedded-raster",
+      "status": "implemented-evidence-gated",
+      "fidelity": "partial",
+      "missingEvidence": ["format-corpus", "visual-oracle"]
+    },
+    {
+      "id": "resources.placed-art",
+      "status": "implemented-policy",
+      "fidelity": "structure-only",
+      "missingEvidence": ["host-resolver", "licensed-external-fixtures"]
+    },
+    {
+      "id": "text.point",
+      "status": "implemented-evidence-gated",
+      "fidelity": "partial",
+      "missingEvidence": ["font-corpus", "visual-oracle"]
+    },
+    {
+      "id": "text.area-path-threaded",
+      "status": "structure-only",
+      "fidelity": "structure-only",
+      "missingEvidence": ["layout-engine", "real-illustrator-fixture", "visual-oracle"]
+    },
+    {
+      "id": "transparency.opacity-blend",
+      "status": "implemented-evidence-gated",
+      "fidelity": "partial",
+      "missingEvidence": ["visual-oracle"]
+    },
+    {
+      "id": "transparency.mask-isolation-knockout",
+      "status": "structure-only",
+      "fidelity": "structure-only",
+      "missingEvidence": ["offscreen-compositor", "visual-oracle"]
+    },
+    {
+      "id": "advanced.symbols-brushes-effects-plugins",
+      "status": "structure-and-fallback",
+      "fidelity": "structure-only",
+      "missingEvidence": ["expanded-appearance-corpus", "visual-oracle"]
+    },
+    {
+      "id": "render.shared-plan",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["determinism-test", "clip-order-test"]
+    },
+    {
+      "id": "render.canvas",
+      "status": "implemented-evidence-gated",
+      "fidelity": "partial",
+      "missingEvidence": ["visual-oracle", "cross-browser"]
+    },
+    {
+      "id": "render.svg",
+      "status": "implemented-evidence-gated",
+      "fidelity": "partial",
+      "evidence": ["active-content-safety-test"],
+      "missingEvidence": ["visual-oracle", "cross-browser"]
+    },
+    {
+      "id": "runtime.worker-cancel-timeout",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["termination-by-design"]
+    },
+    {
+      "id": "runtime.byte-lru-disposal",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["unit-test"]
+    },
+    {
+      "id": "verification.structure-visual-oracle",
+      "status": "implemented-tooling",
+      "fidelity": "structure-only",
+      "missingEvidence": ["licensed-real-fixtures", "adobe-render-output"]
+    },
+    {
+      "id": "security.mutation-budget-network",
+      "status": "implemented",
+      "fidelity": "high",
+      "evidence": ["synthetic-malicious-suite"]
+    }
+  ]
+}
