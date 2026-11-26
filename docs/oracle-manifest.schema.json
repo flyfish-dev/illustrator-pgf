@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flyfish.dev/schemas/illustrator-pgf-oracle-manifest.schema.json",
+  "title": "Illustrator PGF Oracle Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "fixtureId",
+    "illustratorVersion",
+    "extension",
+    "license",
+    "sourceSha256"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "fixtureId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "illustratorVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extension": {
+      "enum": ["ai", "ait"]
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceSha256": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{64}$"
+    },
+    "structureOracle": {
+      "$ref": "#/$defs/structureOracle"
+    },
+    "visualOracle": {
+      "$ref": "#/$defs/visualOracle"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "structureOracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "artboards": { "$ref": "#/$defs/nonNegativeInteger" },
+        "layers": { "$ref": "#/$defs/nonNegativeInteger" },
+        "groups": { "$ref": "#/$defs/nonNegativeInteger" },
+        "paths": { "$ref": "#/$defs/nonNegativeInteger" },
+        "compoundPaths": { "$ref": "#/$defs/nonNegativeInteger" },
+        "clipGroups": { "$ref": "#/$defs/nonNegativeInteger" },
+        "textFrames": { "$ref": "#/$defs/nonNegativeInteger" },
+        "rasterImages": { "$ref": "#/$defs/nonNegativeInteger" },
+        "placedArt": { "$ref": "#/$defs/nonNegativeInteger" },
+        "resources": { "$ref": "#/$defs/nonNegativeInteger" },
+        "requiredFonts": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "fidelity": {
+          "enum": [
+            "exact",
+            "high",
+            "partial",
+            "structure-only",
+            "unsupported"
+          ]
+        }
+      }
+    },
+    "visualOracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["renderer", "width", "height"],
+      "properties": {
+        "renderer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pixelSha256": {
+          "type": "string",
+          "pattern": "^[A-Fa-f0-9]{64}$"
+        },
+        "channelThreshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "maximumDifferentPixelRatio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "maximumMeanChannelDelta": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    }
+  }
+}
