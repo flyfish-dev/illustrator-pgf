@@ -834,7 +834,7 @@ export function createBrowserZstdCodecProvider(
       )
     }
     if (options.requireFrameMagic !== false) assertZstdFrame(input)
-    if (signal?.aborted === true) {
+    if (Boolean(signal?.aborted)) {
       throw new DOMException('zstd decode aborted.', 'AbortError')
     }
     const output = await decoder.decode(

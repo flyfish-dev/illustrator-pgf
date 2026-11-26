@@ -141,6 +141,22 @@ test('browser zstd adapter validates frame and decompressed byte limits', async 
   )
 })
 
+test('browser zstd adapter rejects when the decoder finishes after abort', async () => {
+  const controller = new AbortController()
+  const provider = createBrowserZstdCodecProvider({
+    decode: async () => {
+      await Promise.resolve()
+      controller.abort()
+      return Uint8Array.of(1, 2)
+    },
+  })
+  const frame = Uint8Array.of(0x28, 0xb5, 0x2f, 0xfd)
+  await assert.rejects(
+    () => provider.zstdDecompress(frame, 2, controller.signal),
+    { name: 'AbortError', message: 'zstd decode aborted.' },
+  )
+})
+
 test('modern artboard metadata retains UUID selection lock PAR ruler and bleed', () => {
   const source = [
     '%!PS-Adobe-3.0',
@@ -385,6 +401,24 @@ test('external resources require an explicit resolver and obey byte limits', asy
       },
     ),
     /limit/iu,
+  )
+})
+
+test('external resource resolution rejects when the resolver finishes after abort', async () => {
+  const controller = new AbortController()
+  await assert.rejects(
+    () => resolveNativeResource(
+      { id: 'placed-1' },
+      {
+        resolve: async () => {
+          await Promise.resolve()
+          controller.abort()
+          return Uint8Array.of(1, 2)
+        },
+      },
+      controller.signal,
+    ),
+    { name: 'AbortError', message: 'Resource resolution aborted.' },
   )
 })
 

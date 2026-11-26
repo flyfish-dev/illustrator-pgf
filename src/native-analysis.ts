@@ -786,7 +786,7 @@ export async function resolveNativeResource(
   options: NativeResourceResolverOptions = {},
   signal?: AbortSignal,
 ): Promise<NativeResolvedResource> {
-  if (signal?.aborted === true) {
+  if (Boolean(signal?.aborted)) {
     throw new DOMException('Resource resolution aborted.', 'AbortError')
   }
   if (

@@ -1,8 +1,16 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import {
+  DEFAULT_ILLUSTRATOR_LIMITS,
+  PdfDocument,
+  pdfDictionary,
+  pdfGet,
+  pdfName,
+} from '../src/index.js'
 import { inspectIllustrator, decodeIllustratorPrivateSource } from '../src/node.js'
 import { bytesEqual, latin1Encode } from '../src/util.js'
 import { IllustratorError } from '../src/errors.js'
+import { nodeCodecProvider } from '../src/node-codecs.js'
 import {
   DIRECT_SOURCE_BYTES,
   makeClassicAiPdf,
@@ -37,6 +45,15 @@ test('classic xref PDF extracts Catalog-reachable private source', async () => {
   const decoded = await decodeIllustratorPrivateSource(input)
   assert.ok(bytesEqual(decoded.bytes, DIRECT_SOURCE_BYTES))
   assert.equal(decoded.blocks[0]?.part, 1)
+})
+
+test('the package entry retains the low-level PDF reader and helpers', async () => {
+  const document = await PdfDocument.open(makeClassicAiPdf(), {
+    limits: DEFAULT_ILLUSTRATOR_LIMITS,
+    codecs: nodeCodecProvider,
+  })
+  const root = await document.getRoot()
+  assert.equal(pdfName(pdfGet(pdfDictionary(root.value), 'Type')), 'Catalog')
 })
 
 test('Illustrator deflate private-source marker is bounded and decoded', async () => {
